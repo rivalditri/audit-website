@@ -55,7 +55,13 @@
                 <div class="card w-100">
                     <div class="card-body p-4">
                         <h5 class="card-title fw-semibold mb-4">
-                            User
+                            Indikator
+                        </h5>
+                        <h3 class="fw-semibold mb-4">
+                            Fakultas Sains dan Teknologi
+                        </h3>
+                        <h5 class="fw-semibold mb-4">
+                            Aspek 3. Kapabilitas Internal
                         </h5>
                         <div class="table-responsive">
                             <table class="table text-nowrap mb-0 align-middle">
@@ -65,16 +71,10 @@
                                             <h6 class="fw-semibold mb-0">No</h6>
                                         </th>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Nama Unit</h6>
+                                            <h6 class="fw-semibold mb-0">Indikator</h6>
                                         </th>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Inisial</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Email</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Status</h6>
+                                            <h6 class="fw-semibold mb-0">Level</h6>
                                         </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Action</h6>
@@ -84,33 +84,74 @@
                                 <tbody>
                                     <tr>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">1</h6>
+                                            <h6 class="fw-semibold mb-0">3,1</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Fakultas Sains dan Teknologi</h6>
+                                            <h6 class="fw-semibold mb-1">Sumber Daya Manusia</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="fw-normal mb-0 ">Saintek</p>
+                                            <p class="mb-0 fw-normal">1</p>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">saintek@uin-malang.ac.id</h6>
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,2</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">Active</h6>
+                                            <h6 class="fw-semibold mb-1">Pelayanan</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Edit
-                                                    </button>
-                                                </div>
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,3</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">Kapabilitas Internal</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,4</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">Tata Kelola dan Kepemimpinan</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
