@@ -82,37 +82,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">1</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Fakultas Sains dan Teknologi</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <p class="fw-normal mb-0 ">Saintek</p>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">saintek@uin-malang.ac.id</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">Active</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Edit
-                                                    </button>
+                                    <?php $no = 0;
+                                    foreach ($dataUser as $user) : $no++ ?>
+                                        <tr>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0"><?= $no ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0"><?= $user->nama_unit ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <p class="fw-normal mb-0 "><?= $user->inisial ?></p>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0 fs-4"><?= $user->email ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0 fs-4"><?= ($user->is_keuangan == 1) ? "Active" : "Non Active" ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Edit
+                                                        </button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Delete
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>

@@ -19,7 +19,7 @@
                         <span class="hide-menu">Home</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="<?php echo site_url("dashboard") ?>" aria-expanded="false">
+                        <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="<?php echo site_url("/") ?>" aria-expanded="false">
                             <span>
                                 <i class="ti ti-article"></i>
                             </span>
