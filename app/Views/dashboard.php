@@ -76,24 +76,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">1</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1">Fakultas Sains dan Teknologi</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">2022</p>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <a href="<?php echo site_url("aspek") ?>">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Detail
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php $no = 0;
+                                    foreach ($dataUser as $user) : $no++ ?>
+                                        <tr>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0"><?= $no ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-1"><?= $user->nama_unit ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <p class="mb-0 fw-normal"><?= date('Y', strtotime($user->created_at)) ?></p>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <a href="<?php echo site_url("aspek") ?>">
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        Detail
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
