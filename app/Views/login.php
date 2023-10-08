@@ -22,7 +22,7 @@
                   <img src="img/logo-uin.png" width="180" alt="">
                 </a>
                 <p class="text-center">Maturity Blu</p>
-                <form action="<?= base_url('auth') ?>" method="post">
+                <form action="<?= base_url('/auth') ?>" method="post">
 
                   <label for="username" class="form-label">Username</label>
                   <input name="username" type="text" class="form-control" id="username" aria-describedby="text">

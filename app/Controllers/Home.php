@@ -10,14 +10,10 @@ class Home extends BaseController
     {
         $data['title'] = "Dashboard";
         $data['activeMenu'] = "validasi";
-        echo view('templates/header', $data);
-        echo view('templates/sidebar', $data);
 
         $user = new User_model();
         $datauser = $user->tampildata();
-        $data = array('dataUser' => $datauser);
-        echo view('dashboard', $data);
-
-        echo view('templates/footer');
+        $data['dataUser']= $datauser;
+        return view('dashboard', $data);
     }
 }

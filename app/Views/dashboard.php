@@ -1,5 +1,7 @@
 <!--  Body Wrapper -->
+<?php $this->extend('templates/layout'); ?>
 
+<?php $this->section('content'); ?>
 <!--  Main wrapper -->
 <div class="body-wrapper">
     <!--  Header Start -->
@@ -109,3 +111,5 @@
 </div>
 </div>
 </div>
+
+<?php $this->endSection(); ?>

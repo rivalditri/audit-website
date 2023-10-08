@@ -10,14 +10,10 @@ class User extends BaseController
     {
         $data['title'] = "Data User";
         $data['activeMenu'] = "user";
-        echo view('templates/header', $data);
-        echo view('templates/sidebar', $data);
 
         $user = new User_model();
         $datauser = $user->tampildata();
-        $data = array('dataUser' => $datauser);
-        echo view('user', $data);
-
-        echo view('templates/footer');
+        $data['dataUser'] = $datauser;
+        return view('user', $data);
     }
 }

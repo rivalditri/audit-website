@@ -1,8 +1,7 @@
 <!--  Body Wrapper -->
-<?= $this->extend('templates/layout'); ?>
+<?= $this->extend('templates/layout.php');?>
 
 <?= $this->section('content'); ?>
-
 <!--  Main wrapper -->
 <div class="body-wrapper">
     <!--  Header Start -->
@@ -85,27 +84,78 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 0;
-                                    foreach ($dataIndikator as $indikator) : $no++ ?>
-                                        <tr>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">3,<?= $no ?></h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1"><?= $indikator->indikator ?></h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <p class="mb-0 fw-normal">1</p>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <a href="<?php echo site_url("kapabilitas") ?>">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Detail
-                                                    </button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach ?>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,1</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">Sumber Daya Manusia</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,2</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">Pelayanan</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,3</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">Kapabilitas Internal</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">3,4</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">Tata Kelola dan Kepemimpinan</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">1</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="<?php echo site_url("kapabilitas") ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

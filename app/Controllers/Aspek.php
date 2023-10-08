@@ -10,14 +10,10 @@ class Aspek extends BaseController
     {
         $data['title'] = "Aspek";
         $data['activeMenu'] = "validasi";
-        echo view('templates/header', $data);
-        echo view('templates/sidebar', $data);
 
         $aspek = new Aspek_model();
         $dataaspek = $aspek->tampildata();
-        $data = array('dataAspek' => $dataaspek);
-        echo view('aspek', $data);
-
-        echo view('templates/footer');
+        $data['dataAspek']= $dataaspek;
+        return view('aspek', $data);
     }
 }

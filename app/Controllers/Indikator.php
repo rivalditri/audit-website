@@ -10,14 +10,10 @@ class Indikator extends BaseController
     {
         $data['title'] = "Indikator";
         $data['activeMenu'] = "validasi";
-        echo view('templates/header', $data);
-        echo view('templates/sidebar', $data);
 
         $indikator = new Indikator_model();
         $dataindikator = $indikator->tampildata();
-        $data = array('dataIndikator' => $dataindikator);
-        echo view('indikator', $data);
-
-        echo view('templates/footer');
+        $data['dataIndikator'] = $dataindikator;
+        return view('indikator', $data);
     }
 }
