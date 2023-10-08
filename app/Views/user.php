@@ -1,4 +1,7 @@
 <!--  Body Wrapper -->
+<?= $this->extend('templates/layout') ?>
+
+<?= $this->section('content') ?>
 
 <!--  Main wrapper -->
 <div class="body-wrapper">
@@ -20,13 +23,10 @@
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                 <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                    <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank"
-                        class="btn btn-primary">Download Free</a>
+                    <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Download Free</a>
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="assets/images/profile/user-1.jpg" alt="" width="35" height="35"
-                                class="rounded-circle" />
+                        <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                             <div class="message-body">
@@ -42,8 +42,7 @@
                                     <i class="ti ti-list-check fs-6"></i>
                                     <p class="mb-0 fs-3">My Task</p>
                                 </a>
-                                <a href="./authentication-login.html"
-                                    class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                             </div>
                         </div>
                     </li>
@@ -86,39 +85,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">1</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1">Fakultas Sains dan Teknologi</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">Saintek</p>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">saintek@uin-malang.ac.id</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4">Active</h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal">
-                                                        Edit
-                                                    </button>
+                                    <?php $no = 0;
+                                    foreach ($dataUser as $user) : $no++ ?>
+                                        <tr>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0"><?= $no ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0"><?= $user->nama_unit ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <p class="fw-normal mb-0 "><?= $user->inisial ?></p>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0 fs-4"><?= $user->email ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0 fs-4"><?= ($user->is_keuangan == 1) ? "Active" : "Non Active" ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Edit
+                                                        </button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Delete
+                                                        </button>
+                                                    </div>
                                                 </div>
-                                                <div class="col">
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                         </div>
@@ -131,3 +131,5 @@
 </div>
 </div>
 </div>
+
+<?= $this->endSection() ?>

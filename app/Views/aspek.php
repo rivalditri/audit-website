@@ -1,7 +1,7 @@
 <!--  Body Wrapper -->
-<?php $this->extend('templates/layout'); ?>
+<?=$this->extend('templates/layout');?>
 
-<?php $this->section('content'); ?>
+<?=$this->section('content');?>
 <!--  Main wrapper -->
 <div class="body-wrapper">
     <!--  Header Start -->
@@ -57,8 +57,11 @@
                 <div class="card w-100">
                     <div class="card-body p-4">
                         <h5 class="card-title fw-semibold mb-4">
-                            Fakultas
+                            Aspek
                         </h5>
+                        <h3 class="fw-semibold mb-4">
+                            Fakultas Sains dan Teknologi
+                        </h3>
                         <div class="table-responsive">
                             <table class="table text-nowrap mb-0 align-middle">
                                 <thead class="text-dark fs-4">
@@ -67,10 +70,10 @@
                                             <h6 class="fw-semibold mb-0">No</h6>
                                         </th>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Fakultas</h6>
+                                            <h6 class="fw-semibold mb-0">Aspek</h6>
                                         </th>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Tahun</h6>
+                                            <h6 class="fw-semibold mb-0">Maturitas</h6>
                                         </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Action</h6>
@@ -79,19 +82,19 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 0;
-                                    foreach ($dataUser as $user) : $no++ ?>
+                                    foreach ($dataAspek as $aspek) : $no++ ?>
                                         <tr>
                                             <td class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0"><?= $no ?></h6>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1"><?= $user->nama_unit ?></h6>
+                                                <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <p class="mb-0 fw-normal"><?= date('Y', strtotime($user->created_at)) ?></p>
+                                                <p class="mb-0 fw-normal">5</p>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <a href="<?php echo site_url("aspek") ?>">
+                                                <a href="<?php echo site_url("indikator") ?>">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         Detail
                                                     </button>
@@ -111,5 +114,5 @@
 </div>
 </div>
 </div>
-
-<?php $this->endSection(); ?>
+<!--  Body End -->
+<?=$this->endSection();?>
