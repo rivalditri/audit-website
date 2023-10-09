@@ -6,14 +6,10 @@ use CodeIgniter\Model;
 
 class Aspek_model extends Model
 {
-    function __construct()
-    {
-        $this->db = db_connect();
-    }
-
-    function tampildata()
-    {
-        $dataquery = $this->db->query("select * from m_aspek");
-        return $dataquery->getResult();
-    }
+    protected $table = 'm_aspek';
+    protected $primaryKey = 'id_aspek';
+    protected $useSoftDeletes = true;
+    protected $useTimestamps = true;
+    protected $deletedField = 'delete_at';
+    protected $returnType = 'object';
 }

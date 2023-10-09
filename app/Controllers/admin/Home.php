@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\admin;
 
+use App\Controllers\BaseController;
 use App\Models\User_model;
 
 class Home extends BaseController
 {
     public function index()
     {
+        // dd("admin");
         $data['title'] = "Dashboard";
         $data['activeMenu'] = "validasi";
 
-        $user = new User_model();
-        $datauser = $user->tampildata();
-        $data['dataUser']= $datauser;
+        $user = $this->user_model->getUsers();
+        $data['dataUser']= $user;
         return view('dashboard', $data);
     }
 }
