@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\admin;
 
 use App\Models\User_model;
+use App\Controllers\BaseController;
 
 class User extends BaseController
 {
@@ -12,7 +13,7 @@ class User extends BaseController
         $data['activeMenu'] = "user";
 
         $user = new User_model();
-        $datauser = $user->tampildata();
+        $datauser = $user->findAll();
         $data['dataUser'] = $datauser;
         return view('user', $data);
     }

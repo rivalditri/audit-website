@@ -6,14 +6,18 @@ use CodeIgniter\Model;
 
 class User_model extends Model
 {
-    function __construct()
-    {
-        $this->db = db_connect();
-    }
+    protected $table = 'm_user';
+    protected $primaryKey = 'id_user';
+    protected $useSoftDeletes = true;
+    protected $useTimestamps = true;
+    protected $deletedField = 'delete_at';
+    protected $returnType = 'object';
 
-    function tampildata()
+    public function getUsers()
     {
-        $dataquery = $this->db->query("select * from m_user WHERE id_user <> 1");
-        return $dataquery->getResult();
+        $builder = $this->db->table('m_user');
+        $builder->select('*')->where('is_admin', 0);
+        $query = $builder->get();
+        return $query->getResult();
     }
 }

@@ -8,6 +8,10 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\Aspek_model;
+use App\Models\Indikator_model;
+use App\Models\User_model;
+use App\Models\Level_indikator_model;
 
 /**
  * Class BaseController
@@ -42,6 +46,10 @@ abstract class BaseController extends Controller
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
     // protected $session;
+    protected $aspek_model;
+    protected $user_model;
+    protected $indikator_model;
+    protected $levelIndikator_model;
 
     /**
      * @return void
@@ -52,7 +60,10 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-
+        $this->aspek_model = new Aspek_model();
+        $this->user_model = new User_model();
+        $this->indikator_model = new Indikator_model();
+        $this->levelIndikator_model = new Level_indikator_model();
         // E.g.: $this->session = \Config\Services::session();
     }
 }

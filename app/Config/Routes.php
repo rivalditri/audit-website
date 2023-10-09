@@ -8,7 +8,14 @@ use CodeIgniter\Router\RouteCollection;
 $routes->setAutoRoute(true);
 
 $routes->get('/', 'Auth::index');
+$routes->get('/aspek/(:segment)', 'aspek::index/$1');
+$routes->get('/admin', 'admin\home::index');
+$routes->get('/users', 'admin\User::index');
+$routes->get('/indikator/(:num)', 'indikator::index/$1');
+$routes->get('/levelIndikator/(:segment)', 'levelIndikator::index/$1');
+$routes->get('/levelKriteria/(:segment)', 'levelKriteria::index/$1');
 $routes->post('/auth', 'Auth::login');
+$routes->get('/logout', 'Auth::logout');
 // $routes->get('/user', 'Pages::user');
 // $routes->get('/dashboard', 'Pages::dashboard');
 // $routes->get('/aspek', 'Pages::aspek');

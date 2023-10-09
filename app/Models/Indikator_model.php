@@ -6,14 +6,23 @@ use CodeIgniter\Model;
 
 class Indikator_model extends Model
 {
-    function __construct()
+    protected $table = 'm_indikator';
+    protected $primaryKey = 'id_indikator';
+    protected $useSoftDeletes = true;
+    protected $useTimestamps = true;
+    protected $deletedField = 'delete_at';
+    protected $returnType = 'object';
+
+    public function getIndikator($id_indikator)
     {
-        $this->db = db_connect();
+        return $this->where('id_indikator', $id_indikator)->first()->indikator;
     }
 
-    function tampildata()
+    public function getAspek($id_indikator)
     {
-        $dataquery = $this->db->query("select * from m_indikator");
-        return $dataquery->getResult();
+        $builder = $this->db->table('m_aspek');
+        $builder->select('aspek')->join('m_indikator', 'm_indikator.id_aspek = m_aspek.id_aspek')->where('m_indikator.id_indikator', $id_indikator);
+        $query = $builder->get();
+        return $query->getRow()->aspek;
     }
 }

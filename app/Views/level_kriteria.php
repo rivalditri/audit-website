@@ -10,27 +10,40 @@
             <div class="col-lg d-flex align-items-stretch">
                 <div class="card w-100">
                     <div class="card-body p-4">
-                        <h5 class="card-title fw-semibold mb-4">
-                            Indikator
-                        </h5>
-                        <h3 class="fw-semibold mb-4">
+                        <h2 class="card-title fw-semibold mb-4">
                             <?= session()->get('nama_unit') ?>
+                        </h2>
+                        <h3 class="fw-semibold mb-4">
+                            aspek
                         </h3>
                         <h5 class="fw-semibold mb-4">
-                            <?= $aspek ?>
+                            indikator
                         </h5>
+                        <h5 class="fw-semibold mb-4">
+                            Level
+                        </h5>
+                        <h5 class="fw-semibold mb-4">
+                            Kriteria
+                        </h5>
+
                         <div class="table-responsive">
                             <table class="table text-nowrap mb-0 align-middle">
                                 <thead class="text-dark fs-4">
                                     <tr>
                                         <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">No</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Indikator</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Level</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Capaian Unit</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Presentase Capaian Unit</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Capaian Satker</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">Presentase Capaian Satker</h6>
                                         </th>
                                         <th class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">Action</h6>
@@ -38,20 +51,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 0;
-                                    foreach ($dataIndikator as $indikator) : $no++ ?>
+                                    <?php foreach ($dataLevel as $level) : ?>
                                         <tr>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0"><?= $indikator->id_indikator ?></h6>
+                                                <h6 class="fw-semibold mb-0"><?= $level->nama_level ?></h6>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1"><?= $indikator->indikator ?></h6>
+                                                tercapai
                                             </td>
                                             <td class="border-bottom-0">
-                                                <p class="mb-0 fw-normal">1</p>
+                                                <p class="mb-0 fw-normal">50%</p>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <a href="/levelIndikator/<?=$indikator->id_indikator?>">
+                                                tercapai
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <p class="mb-0 fw-normal">50%</p>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <a href="<?php echo site_url("") ?>">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         Detail
                                                     </button>
