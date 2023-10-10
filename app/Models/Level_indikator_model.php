@@ -13,6 +13,11 @@ class Level_indikator_model extends Model
     protected $deletedField = 'delete_at';
     protected $returnType = 'object';
 
+    public function getKriteriaLevel($id_level)
+    {
+        $level = $this->where('id_level_kapabilitas', $id_level)->first();
+        return $level;
+    }
     public function getLevel($id_indikator)
     {
         $builder = $this->db->table('m_level_kapabilitas');
