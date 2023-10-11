@@ -1,69 +1,69 @@
 <!--  Body Wrapper -->
-<?=$this->extend('templates/layout');?>
+<?= $this->extend('templates/layout'); ?>
 
-<?=$this->section('content');?>
+<?= $this->section('content'); ?>
 <!--  Main wrapper -->
-    <!--  Header End -->
-    <div class="container-fluid">
-        <!--  Row 1 -->
-        <div class="row">
-            <div class="col-lg d-flex align-items-stretch">
-                <div class="card w-100">
-                    <div class="card-body p-4">
-                        <h5 class="card-title fw-semibold mb-4">
-                            Aspek
-                        </h5>
-                        <h3 class="fw-semibold mb-4">
-                            <?= session()->get('nama_unit') ?>
-                        </h3>
-                        <div class="table-responsive">
-                            <table class="table text-nowrap mb-0 align-middle">
-                                <thead class="text-dark fs-4">
+<!--  Header End -->
+<div class="container-fluid">
+    <!--  Row 1 -->
+    <div class="row">
+        <div class="col-lg d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">
+                        Aspek
+                    </h5>
+                    <h3 class="fw-semibold mb-4">
+                        <?= session()->get('nama_unit') ?>
+                    </h3>
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle  table-bordered">
+                            <thead class="text-dark fs-4">
+                                <tr>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">No</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Aspek</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Maturitas</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Action</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 0;
+                                foreach ($dataAspek as $aspek) : $no++ ?>
                                     <tr>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">No</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Aspek</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Maturitas</h6>
-                                        </th>
-                                        <th class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0">Action</h6>
-                                        </th>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0"><?= $no ?></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">5</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="/indikator/<?= $aspek->id_aspek ?>">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $no = 0;
-                                    foreach ($dataAspek as $aspek) : $no++ ?>
-                                        <tr>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0"><?= $no ?></h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <p class="mb-0 fw-normal">5</p>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <a href="/indikator/<?=$aspek->id_aspek?>">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        Detail
-                                                    </button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php endforeach ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 <!--  Body End -->
-<?=$this->endSection();?>
+<?= $this->endSection(); ?>

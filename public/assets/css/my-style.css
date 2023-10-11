@@ -3,10 +3,22 @@
 }
 
 .fixed-width-column {
-    width: 200px;
+    width: 250px;
     height: auto;
     white-space: nowrap;
     overflow: hidden;
     white-space: normal;
     word-wrap: break-word;
+}
+
+.column-small {
+    width: 80px;
+}
+
+.column-very-small {
+    width: 50px;
+}
+
+.not-allow-button {
+    pointer-events: none;
 }
