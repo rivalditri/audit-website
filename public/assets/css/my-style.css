@@ -1,10 +1,12 @@
 .tes {
-  color: red;
+    color: red;
 }
 
 .fixed-width-column {
-  width: 20px;
-  height: auto;
-  white-space: nowrap;
-  overflow: hidden;
+    width: 200px;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
 }
