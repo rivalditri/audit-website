@@ -62,7 +62,7 @@
                                                 <p class="mb-0 fw-normal">50%</p>
                                             </td>
                                             <td class="border-bottom-0">
-                                                <a href="<?php echo site_url("") ?>">
+                                                <a href="/levelKriteria/<?=$level->id_level_kapabilitas?>">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         Detail
                                                     </button>

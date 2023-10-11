@@ -12,6 +12,7 @@ use App\Models\Aspek_model;
 use App\Models\Indikator_model;
 use App\Models\User_model;
 use App\Models\Level_indikator_model;
+use App\Models\Level_proses_model;
 
 /**
  * Class BaseController
@@ -50,6 +51,7 @@ abstract class BaseController extends Controller
     protected $user_model;
     protected $indikator_model;
     protected $levelIndikator_model;
+    protected $levelProses_model;
 
     /**
      * @return void
@@ -64,6 +66,7 @@ abstract class BaseController extends Controller
         $this->user_model = new User_model();
         $this->indikator_model = new Indikator_model();
         $this->levelIndikator_model = new Level_indikator_model();
+        $this->levelProses_model = new Level_proses_model();
         // E.g.: $this->session = \Config\Services::session();
     }
 }
