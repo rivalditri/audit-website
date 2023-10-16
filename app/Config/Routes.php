@@ -16,6 +16,7 @@ $routes->get('/levelIndikator/(:segment)', 'levelIndikator::index/$1');
 $routes->get('/levelKriteria/(:segment)', 'levelKriteria::index/$1');
 $routes->post('/auth', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
+$routes->post('/dokumen', 'Dokumen::upload');
 // $routes->get('/user', 'Pages::user');
 // $routes->get('/dashboard', 'Pages::dashboard');
 // $routes->get('/aspek', 'Pages::aspek');

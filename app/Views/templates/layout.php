@@ -8,7 +8,7 @@
     <title>Audit Fakultas |
         <?php echo $title ?>
     </title>
-    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>/assets/images/logos/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="<?=base_url()?>/img/logo-uin.png" />
     <link rel="stylesheet" href="<?=base_url()?>/assets/css/styles.min.css" />
     <link rel="stylesheet" href="<?=base_url()?>/assets/css/my-style.css" />
 </head>
@@ -22,8 +22,8 @@
         <!-- Sidebar scroll-->
         <div>
             <div class="brand-logo d-flex align-items-center justify-content-between">
-                <a href="<?php echo site_url("Home") ?>" class="text-nowrap logo-img">
-                    <img src="<?=base_url()?>/assets/images/logos/dark-logo.svg" width="180" alt="" />
+                <a href="<?php echo site_url("/") ?>" class="text-nowrap logo-img">
+                    <img src="<?=base_url()?>/img/logo-uin.png" width="45" alt="" />
                 </a>
                 <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                     <i class="ti ti-x fs-8"></i>
