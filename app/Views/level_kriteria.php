@@ -72,9 +72,30 @@
                                         </td>
                                         <td class="border-bottom-0 text-center">
                                             <?php if (session()->get('role') == '0') : ?>
-                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#uploadModal">
                                                     Upload
                                                 </button>
+                                                <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="uploadModalLabel">Upload Document</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <form action="/dokumen" method="post" enctype="multipart/form-data">
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <input class="form-control" type="file" id="formFile" name="file" accept=".pdf, .doc, .docx">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             <?php else : ?>
                                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                     Download
@@ -82,14 +103,76 @@
                                             <?php endif ?>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#validasiModal">
                                                 validasi
                                             </button>
+                                            <div class="modal fade" id="validasiModal" tabindex="-1" aria-labelledby="validasiModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="validasiModalLabel">Validasi</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <iframe src="./uploads/index.html" width="100%" height="200px"></iframe>
+                                                            <form action="" method="post">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="radioValidation" id="radioValidation1" checked>
+                                                                    <label class="form-check-label" for="radioValidation1">
+                                                                        Under Review
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="radioValidation" id="radioValidation2">
+                                                                    <label class="form-check-label" for="radioValidation2">
+                                                                        Valid
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="radioValidation" id="radioValidation3">
+                                                                    <label class="form-check-label" for="radioValidation3">
+                                                                        Tidak Valid
+                                                                    </label>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">
                                                 Detail
                                             </button>
+                                            <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="detailModalLabel">Detail</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <iframe src="./uploads/index.html" width="100%" height="200px"></iframe>
+                                                            <form action="" method="post">
+                                                                <input class="form-control mb-3" type="file" id="formFile" name="document_file" hidden>
+                                                                <input class="form-control mb-3" type="text" id="formFile" name="validation_file" value="Valid" disabled>
+                                                                <div class="form-floating">
+                                                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px;"></textarea>
+                                                                    <label for="floatingTextarea">Comments</label>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
