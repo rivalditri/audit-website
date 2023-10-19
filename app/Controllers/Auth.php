@@ -13,24 +13,28 @@ class Auth extends BaseController
     {
         // get data dari form
         $username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
 
         $row = $this->user_model->where('inisial', $username)->first();
-        if($row->is_admin == 1){
-            $data = [
-                'role' => $row->is_admin,
-            ];
-            session()->set($data);
-            return redirect()->to(base_url('/admin'));
-        }else if($row->is_admin == 0){
-            $data = [
-                'id_user' => $row->id_user,
-                'role' => 0
-            ];
-            session()->set($data);
-            return redirect()->to(base_url('/aspek/'.$row->id_user));
+        if($row == null){
+            return redirect()->to(base_url('/'));
+        }else{
+            if($row->is_admin == 1){
+                $data = [
+                    'id_user' => $row->id_user,
+                    'role' => $row->is_admin,
+                ];
+                session()->set($data);
+                return redirect()->to(base_url('/admin'));
+            }else if($row->is_admin == 0){
+                $data = [
+                    'id_user' => $row->id_user,
+                    'user' => $row->inisial,
+                    'role' => 0
+                ];
+                session()->set($data);
+                return redirect()->to(base_url('/aspek/'.$row->id_user));
+            }
         }
-        return redirect()->to(base_url('/'));
     }
 
     public function logout()

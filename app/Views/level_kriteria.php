@@ -85,6 +85,9 @@
                                                             <form action="/dokumen" method="post" enctype="multipart/form-data">
                                                                 <div class="modal-body">
                                                                     <div class="mb-3">
+                                                                        <input class="form-control" type="text" name="id_level">
+                                                                    </div>
+                                                                    <div class="mb-3">
                                                                         <input class="form-control" type="file" id="formFile" name="file" accept=".pdf, .doc, .docx">
                                                                     </div>
                                                                 </div>
