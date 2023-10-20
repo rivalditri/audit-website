@@ -10,9 +10,18 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h2 class="card-title fw-semibold mb-4">
-                        <?= session()->get('nama_unit') ?>
-                    </h2>
+                    <div class="d-flex justify-content-between">
+                        <h5 class="flex-grow-1 card-title fw-semibold mb-4">
+                            <?= session()->get('nama_unit') ?>
+                        </h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Aspek</a></li>
+                                <li class="breadcrumb-item"><a href="#">Indikator</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= $aspek ?></li>
+                            </ol>
+                        </nav>
+                    </div>
                     <h3 class="fw-semibold mb-4">
                         <?= $aspek ?>
                     </h3>
@@ -52,19 +61,19 @@
                                             <h6 class="fw-semibold mb-0"><?= $level->nama_level ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <?php if (true) { ?>
+                                            <?php if (true) : ?>
                                                 <button type="button" class="btn btn-primary not-allow-button">
                                                     <span>
                                                         <i class="ti ti-check"></i>
                                                     </span>
                                                 </button>
-                                            <?php } else { ?>
+                                            <?php else : ?>
                                                 <button type="button" class="btn btn-danger not-allow-button">
                                                     <span>
                                                         <i class="ti ti-x"></i>
                                                     </span>
                                                 </button>
-                                            <?php }  ?>
+                                            <?php endif ?>
                                         </td>
                                         <td class="border-bottom-0">
                                             <p class="mb-0 fw-normal">50%</p>

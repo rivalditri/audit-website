@@ -10,9 +10,17 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4">
-                        Indikator
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <h5 class="flex-grow-1 card-title fw-semibold mb-4">
+                            Indikator
+                        </h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Aspek</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Indikator</li>
+                            </ol>
+                        </nav>
+                    </div>
                     <h3 class="fw-semibold mb-4">
                         <?= session()->get('nama_unit') ?>
                     </h3>

@@ -10,9 +10,16 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4">
-                        Aspek
-                    </h5>
+                    <div class="d-flex justify-content-between">
+                        <h5 class="flex-grow-1 card-title fw-semibold mb-4">
+                            Aspek
+                        </h5>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active">Aspek</li>
+                            </ol>
+                        </nav>
+                    </div>
                     <h3 class="fw-semibold mb-4">
                         <?= session()->get('nama_unit') ?>
                     </h3>
