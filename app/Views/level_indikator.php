@@ -16,8 +16,8 @@
                         </h5>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Aspek</a></li>
-                                <li class="breadcrumb-item"><a href="#">Indikator</a></li>
+                                <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('id_user') ?>">Aspek</a></li>
+                                <li class="breadcrumb-item"><a href="/indikator/<?= explode('/', explode('.', uri_string())[0])[1] ?>">Indikator</a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?= $aspek ?></li>
                             </ol>
                         </nav>
