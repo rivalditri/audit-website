@@ -13,6 +13,8 @@ use App\Models\Indikator_model;
 use App\Models\User_model;
 use App\Models\Level_indikator_model;
 use App\Models\Level_proses_model;
+use App\models\Task_validation_model;
+use App\Models\Dokumen_model;
 
 /**
  * Class BaseController
@@ -52,7 +54,8 @@ abstract class BaseController extends Controller
     protected $indikator_model;
     protected $levelIndikator_model;
     protected $levelProses_model;
-
+    protected $taskValidation_model;
+    protected $dokumen_model;
     /**
      * @return void
      */
@@ -62,11 +65,13 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
+        $this->dokumen_model = new Dokumen_model();
         $this->aspek_model = new Aspek_model();
         $this->user_model = new User_model();
         $this->indikator_model = new Indikator_model();
         $this->levelIndikator_model = new Level_indikator_model();
         $this->levelProses_model = new Level_proses_model();
+        $this->taskValidation_model = new Task_validation_model();
         // E.g.: $this->session = \Config\Services::session();
     }
 }

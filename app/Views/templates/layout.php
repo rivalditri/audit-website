@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!-- sidebar -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
@@ -38,13 +37,14 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="<?php
-                                                                                                                            if (session()->get('role') == 0) {
-                                                                                                                                echo site_url("/aspek/" . session()->get('id_user'));
-                                                                                                                            } else {
-                                                                                                                                echo site_url("admin");
-                                                                                                                            }
-                                                                                                                            ?>" aria-expanded="false">
+                            <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="
+                            <?php
+                            if (session()->get('role') == 0) {
+                                echo site_url("/aspek/" . session()->get('id_user'));
+                            } else {
+                                echo site_url("admin");
+                            }
+                            ?>" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -114,7 +114,7 @@
     <script src="<?= base_url() ?>/assets/js/sidebarmenu.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 
 

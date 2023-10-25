@@ -81,16 +81,18 @@
                                             <p class="mb-0 fw-normal"><?= $proses->deskripsi_dokumen ?></p>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <?php if (true) { ?>
+                                            <?php if ($status[$proses->id_level_kriteria] == 2) { ?>
                                                 <button type="button" class="btn btn-success not-allow-button">Valid</button>
-                                            <?php } else if ("not-valid") { ?>
+                                            <?php } else if ($status[$proses->id_level_kriteria] == 3) { ?>
                                                 <button type="button" class="btn btn-danger not-allow-button">Tidak Valid</button>
-                                            <?php } else { ?>
+                                            <?php } else if ($status[$proses->id_level_kriteria] == 1) { ?>
                                                 <button type="button" class="btn btn-warning not-allow-button">Under Review</button>
+                                            <?php } else { ?>
+                                                -
                                             <?php } ?>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h5>$status</h5>
+                                            <?= $komentar[$proses->id_level_kriteria] ?>
                                         </td>
                                         <td class="border-bottom-0 text-center">
                                             <?php if (session()->get('role') == '0') : ?>

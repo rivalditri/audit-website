@@ -13,7 +13,7 @@ class levelKriteria extends BaseController
         //get Indikator dari level indikator
         $indikator = $this->levelProses_model->getIndikator($id_level);
         $data['indikator'] = $indikator->indikator;
-        
+
         //get aspek dari indikator
         $aspek = $this->indikator_model->getAspek($indikator->id_indikator);
         $data['aspek'] = $aspek;
@@ -22,7 +22,25 @@ class levelKriteria extends BaseController
         $kriteriaLevel = $this->levelIndikator_model->getKriteriaLevel($id_level);
         //get all proses on level
         $proses = $this->levelProses_model->getAllProses($id_level);
-        
+        $komentar = array();
+        $status = array();
+
+
+        foreach ($proses as $levelKriteria) {
+            $idLevel = $levelKriteria->id_level_kriteria;
+            $idFile = $this->dokumen_model->getIdFile($idLevel);
+            $status[$idLevel] = "-";
+            $komentar[$idLevel] = "-";
+            if ($idFile) {
+                $id_task = $this->taskValidation_model->getValidation($idFile->id_file_dokumen);
+                $komentar[$idLevel] = $id_task->komentar;
+                $status[$idLevel] = $id_task->id_status;
+            }
+        }
+
+        $data['komentar'] = $komentar;
+        $data['status'] = $status;
+        // dd($data);
         $data['kriteria'] = $kriteriaLevel->kriteria_level;
         $data['level'] = $kriteriaLevel->nama_level;
         $data['data_proses'] = $proses;

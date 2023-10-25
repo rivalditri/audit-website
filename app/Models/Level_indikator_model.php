@@ -26,5 +26,3 @@ class Level_indikator_model extends Model
         return $query->getResult();
     }
 }
-
-
