@@ -22,11 +22,11 @@ class Validation extends BaseController
         ];
         $row = $this->taskValidation_model->update($id, $data);
         if (!$row) {
-            session()->setFlashdata('success', 'Dokumen Berhasil Di Audit');
-            $this->response->setStatusCode(200, 'OK')->setBody('validasi berhasil');
-        } else {
             session()->setFlashdata('success', 'Dokumen Gagal Di Audit');
             $this->response->setStatusCode(400, 'Bad Request');
+        } else {
+            session()->setFlashdata('success', 'Dokumen Berhasil Di Audit');
+            $this->response->setStatusCode(200, 'OK')->setBody('validasi berhasil');
         }
     }
 

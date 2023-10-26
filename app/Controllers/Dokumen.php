@@ -24,7 +24,7 @@ class Dokumen extends BaseController
                 $name = "2023" . "_" . $user . "_" . $idlevel . "." . $file->getExtension();
                 $file->move($path, $name);
                 $data = [
-                    'file_upload' => $name,
+                    'file_upload' => $file->getName(),
                     'id_user' => $idUser,
                     'id_level_kriteria' => $idlevel,
                     'created_by' => $user,
@@ -45,5 +45,24 @@ class Dokumen extends BaseController
             session()->setFlashdata('failed', 'format tidak sesuai');
             $this->response->setStatusCode(400, 'Bad Request');
         }
+    }
+    public function download($id_level)
+    {
+        $idFile = $this->dokumen_model->getIdFile($id_level);
+        if ($idFile) {
+            $dokumen = $this->dokumen_model->find($idFile->id_file_dokumen);
+            // Tentukan path file yang akan diunduh
+            $path = WRITEPATH . 'uploads/' . $dokumen->file_upload;
+
+            // Periksa apakah file ada
+            if (file_exists($path)) {
+                // Inisialisasi respon download
+                return $this->response->download($path, null);
+            } else {
+                // Jika file tidak ditemukan, tampilkan pesan kesalahan
+                return redirect()->back()->with('error', 'File tidak ditemukan');;
+            }
+        }
+        return redirect()->back()->with('error', 'File tidak ditemukan di proses' . $id_level);
     }
 }
