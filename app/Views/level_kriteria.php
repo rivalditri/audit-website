@@ -11,7 +11,7 @@
         <div class="alert alert-success">
             <?php echo session()->get('success'); ?>
         </div>
-    <?php } else if (session()->has('success')) { ?>
+    <?php } else if (session()->has('failed')) { ?>
         <div class="alert alert-warning">
             <?php echo session()->get('failed'); ?>
         </div>
@@ -145,11 +145,15 @@
                                                     </div>
                                                 </div>
                                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="ti ti-download"></i>
+                                                    <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
+                                                        <i class="ti ti-download"></i>
+                                                    </a>
                                                 </button>
                                             <?php else : ?>
                                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <i class="ti ti-download"></i>
+                                                    <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
+                                                        <i class="ti ti-download"></i>
+                                                    </a>
                                                 </button>
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal<?= $proses->id_level_kriteria ?>">
                                                     <i class="ti ti-edit"></i>
@@ -201,7 +205,6 @@
                                                     </div>
                                                 </div>
                                             <?php endif ?>
-
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

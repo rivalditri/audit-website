@@ -12,7 +12,7 @@ class Validation extends BaseController
         $komentar = $this->request->getPost('komentar');
 
         //get id file from id proses
-        $id_file = $this->dokumen_model->getIdFile($id_proses);
+        $id_file = $this->dokumen_model->getIdFile($id_proses)->id_file_dokumen;
         $id = $this->taskValidation_model->getValidation($id_file)->id_task_validation;
 
         $data = [
@@ -28,13 +28,15 @@ class Validation extends BaseController
                 'message' => 'Dokumen Berhasil Di Audit',
                 'data' => $data
             ]);
+            return redirect()->back();
         } else {
             session()->setFlashdata('failed', 'Dokumen Gagal Di Audit');
             $this->response->setStatusCode(400, 'Bad Request')->setJSON([
                 'status' => 'failed',
                 'message' => 'Dokumen Gagal Di Audit',
                 'data' => $data
-            ]);;
+            ]);
+            return redirect()->back();
         }
     }
 
