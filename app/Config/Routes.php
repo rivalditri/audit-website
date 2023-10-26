@@ -18,6 +18,7 @@ $routes->post('/auth', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
 $routes->post('/dokumen', 'Dokumen::upload');
 $routes->post('/validasi', 'Validation::validasi');
+$routes->get('/download/(:segment)', 'Dokumen::download/$1');
 // $routes->get('/user', 'Pages::user');
 // $routes->get('/dashboard', 'Pages::dashboard');
 // $routes->get('/aspek', 'Pages::aspek');

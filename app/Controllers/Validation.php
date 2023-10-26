@@ -21,12 +21,20 @@ class Validation extends BaseController
             'validation_by' => 'admin',
         ];
         $row = $this->taskValidation_model->update($id, $data);
-        if (!$row) {
+        if ($row) {
             session()->setFlashdata('success', 'Dokumen Berhasil Di Audit');
-            $this->response->setStatusCode(200, 'OK')->setBody('validasi berhasil');
+            $this->response->setStatusCode(200, 'OK')->setJSON([
+                'status' => 'success',
+                'message' => 'Dokumen Berhasil Di Audit',
+                'data' => $data
+            ]);
         } else {
-            session()->setFlashdata('success', 'Dokumen Gagal Di Audit');
-            $this->response->setStatusCode(400, 'Bad Request');
+            session()->setFlashdata('failed', 'Dokumen Gagal Di Audit');
+            $this->response->setStatusCode(400, 'Bad Request')->setJSON([
+                'status' => 'failed',
+                'message' => 'Dokumen Gagal Di Audit',
+                'data' => $data
+            ]);;
         }
     }
 
