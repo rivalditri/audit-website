@@ -77,7 +77,7 @@
                                         <h6 class="fw-semibold mb-0">Keterangan</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Aksi</h6>
+                                        <h6 class="fw-semibold mb-0">Action</h6>
                                     </th>
                                 </tr>
                             </thead>
@@ -111,99 +111,102 @@
                                         <td class="border-bottom-0 text-center">
                                             <?php if (session()->get('role') == '0') : ?>
                                                 <?php if (str_contains($proses->deskripsi_dokumen, "Tidak ada work product")) : ?>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal<?= $proses->id_level_kriteria ?>" disabled>
-                                                        <i class="ti ti-upload"></i>
-                                                    </button>
+                                                    <em>None</em>
                                                 <?php else : ?>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal<?= $proses->id_level_kriteria ?>">
                                                         <i class="ti ti-upload"></i>
                                                     </button>
+
+                                                    <div class="modal fade" id="uploadModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="uploadModalLabel">Upload Document</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <form action="/dokumen" method="post" enctype="multipart/form-data" id="form-upload">
+                                                                    <div class="modal-body">
+                                                                        <div class="mb-3">
+                                                                            <input class="form-control" type="text" name="id_level" value="<?= $proses->id_level_kriteria ?>" hidden>
+                                                                            <input class="form-control" type="text" name="id_level" value="<?= $proses->id_level_kriteria ?>" disabled>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <input class="form-control" type="file" id="formFile" name="file" accept=".pdf, .doc, .docx">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" class="btn btn-primary btn-upload">Upload</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
+                                                            <i class="ti ti-download"></i>
+                                                        </a>
+                                                    </button>
                                                 <?php endif ?>
-                                                <div class="modal fade" id="uploadModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="uploadModalLabel">Upload Document</h1>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <form action="/dokumen" method="post" enctype="multipart/form-data" id="form-upload">
-                                                                <div class="modal-body">
-                                                                    <div class="mb-3">
-                                                                        <input class="form-control" type="text" name="id_level" value="<?= $proses->id_level_kriteria ?>" hidden>
-                                                                        <input class="form-control" type="text" name="id_level" value="<?= $proses->id_level_kriteria ?>" disabled>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <input class="form-control" type="file" id="formFile" name="file" accept=".pdf, .doc, .docx">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary btn-upload">Upload</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
-                                                        <i class="ti ti-download"></i>
-                                                    </a>
-                                                </button>
                                             <?php else : ?>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
-                                                        <i class="ti ti-download"></i>
-                                                    </a>
-                                                </button>
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal<?= $proses->id_level_kriteria ?>">
-                                                    <i class="ti ti-edit"></i>
-                                                </button>
-                                                <div class="modal fade" id="detailModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="detailModalLabel">Ubah Data</h1>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <?php if (str_contains($proses->deskripsi_dokumen, "Tidak ada work product")) : ?>
+                                                    <em>None</em>
+                                                <?php else : ?>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
+                                                            <i class="ti ti-download"></i>
+                                                        </a>
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal<?= $proses->id_level_kriteria ?>">
+                                                        <i class="ti ti-edit"></i>
+                                                    </button>
+                                                    <div class="modal fade" id="detailModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="detailModalLabel">Ubah Data</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <form action="/validasi" method="post">
+                                                                    <div class="modal-body">
+                                                                        <div class="mb-3">
+                                                                            <input class="form-control" type="text" name="id" value="<?= $proses->id_level_kriteria ?>" hidden>
+                                                                        </div>
+                                                                        <label for="status" class="mb-2 fs-5 fw-semibold">Status</label>
+                                                                        <div class="mb-3">
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="status" value="1" id="status1" checked>
+                                                                                <label class="form-check-label" for="status1">
+                                                                                    Under Review
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="status" value="2" id="status2">
+                                                                                <label class="form-check-label" for="status2">
+                                                                                    Valid
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="status" value="3" id="status3">
+                                                                                <label class="form-check-label" for="status3">
+                                                                                    Tidak Valid
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-floating">
+                                                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px;" name="komentar"></textarea>
+                                                                            <label for="floatingTextarea">Comments</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
-                                                            <form action="/validasi" method="post">
-                                                                <div class="modal-body">
-                                                                    <div class="mb-3">
-                                                                        <input class="form-control" type="text" name="id" value="<?= $proses->id_level_kriteria ?>" hidden>
-                                                                    </div>
-                                                                    <label for="status" class="mb-2 fs-5 fw-semibold">Status</label>
-                                                                    <div class="mb-3">
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="status" value="1" id="status1" checked>
-                                                                            <label class="form-check-label" for="status1">
-                                                                                Under Review
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="status" value="2" id="status2">
-                                                                            <label class="form-check-label" for="status2">
-                                                                                Valid
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input" type="radio" name="status" value="3" id="status3">
-                                                                            <label class="form-check-label" for="status3">
-                                                                                Tidak Valid
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-floating">
-                                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px;" name="komentar"></textarea>
-                                                                        <label for="floatingTextarea">Comments</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                                </div>
-                                                            </form>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                <?php endif ?>
                                             <?php endif ?>
                                         </td>
                                     </tr>
