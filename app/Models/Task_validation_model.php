@@ -8,7 +8,7 @@ class Task_validation_model extends Model
 {
     protected $table = 'task_validation';
     protected $primaryKey = 'id_task_validation';
-    protected $allowedFields = ['id_status', 'komentar', 'validation_by'];
+    protected $allowedFields = ['id_file_dokumen', 'id_status', 'komentar', 'validation_by'];
     protected $useSoftDeletes = false;
     protected $updatedField = 'validation_at';
     protected $useTimestamps = true;
@@ -19,7 +19,16 @@ class Task_validation_model extends Model
         $builder = $this->db->table($this->table);
         $builder->select('*')->where('id_file_dokumen', $id_file);
         $query = $builder->get();
-        return $query->getResult()[0];
+        return $query->getRow();
+    }
+    public function countValidDoc($id_file_document)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->selectCount('id_task_validation', 'validCount')
+            ->where('id_status', 2)
+            ->where('id_file_dokumen', $id_file_document);
+        $query = $builder->get();
+        return $query->getRow();
     }
 
     public function getStatusDokumen($id)

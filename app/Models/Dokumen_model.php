@@ -61,11 +61,11 @@ class Dokumen_model extends Model
     public function getUploadedDocument($id_level)
     {
         $builder = $this->db->table('file_dokumen');
-        $builder->selectCount('id_file_dokumen', 'jumlah_dokumen')
-            ->where('id_level_kriteria LIKE', $id_level . '%')
+        $builder->select('id_file_dokumen, id_level_kriteria')
+            ->like('id_level_kriteria', $id_level)
             ->where('deleted_at IS NULL');
         $query = $builder->get();
-        $result = $query->getRow();
+        $result = $query->getResult();
         return $result;
     }
 }
