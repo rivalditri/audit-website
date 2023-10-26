@@ -33,17 +33,21 @@ class Dokumen extends BaseController
                 if (!$row) {
                     session()->setFlashdata('success', 'File berhasil diupload');
                     $this->response->setStatusCode(201, 'Created');
+                    return redirect()->back();
                 } else {
                     $this->response->setStatusCode(400, 'Bad Request');
+                    return redirect()->back();
                 }
             } else {
                 //error
                 session()->setFlashdata('failed', 'something went wrong');
                 $this->response->setStatusCode(400, 'Bad Request');
+                return redirect()->back();
             }
         } else {
             session()->setFlashdata('failed', 'format tidak sesuai');
             $this->response->setStatusCode(400, 'Bad Request');
+            return redirect()->back();
         }
     }
 }
