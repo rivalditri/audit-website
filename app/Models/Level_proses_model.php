@@ -13,6 +13,15 @@ class Level_proses_model extends Model
     protected $deletedField = 'delete_at';
     protected $returnType = 'object';
 
+    public function countProses($id_level)
+    {
+        $builder = $this->db->table($this->table)
+            ->selectCount('id_level_kriteria', 'jumlah_proses')
+            ->where('id_level_kapabilitas', $id_level);
+        $query = $builder->get();
+        return $query->getRow();
+    }
+
     public function getAllProses($id_level_indikator)
     {
         $proses = $this->where('id_level_kapabilitas', $id_level_indikator)->findAll();
@@ -33,5 +42,3 @@ class Level_proses_model extends Model
         return $query->getRow();
     }
 }
-
-

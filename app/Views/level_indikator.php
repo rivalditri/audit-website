@@ -61,7 +61,7 @@
                                             <h6 class="fw-semibold mb-0"><?= $level->nama_level ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <?php if ($level->nama_level == 'Level 1') : ?>
+                                            <?php if ($level->nama_level == 'Level 1' || $cpu[$level->id_level_kapabilitas] >= 1) : ?>
                                                 <button type="button" class="btn btn-primary not-allow-button">
                                                     <span>
                                                         <i class="ti ti-check"></i>
@@ -76,7 +76,7 @@
                                             <?php endif ?>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal"><?= $level->nama_level == 'Level 1' ? '100%' : "50%" ?></p>
+                                            <p class="mb-0 fw-normal"><?= $level->nama_level == 'Level 1' ? '100%' : $cpu[$level->id_level_kapabilitas] . '%' ?></p>
                                         </td>
                                         <td class="border-bottom-0 text-center">
                                             <?php if ($level->nama_level == 'Level 1') { ?>

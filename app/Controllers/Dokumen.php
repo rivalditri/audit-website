@@ -58,7 +58,6 @@ class Dokumen extends BaseController
             $dokumen = $this->dokumen_model->find($idFile->id_file_dokumen);
             // Tentukan path file yang akan diunduh
             $path = WRITEPATH . 'uploads/' . $dokumen->file_upload;
-
             // Periksa apakah file ada
             if (file_exists($path)) {
                 // Inisialisasi respon download
@@ -66,8 +65,10 @@ class Dokumen extends BaseController
             } else {
                 // Jika file tidak ditemukan, tampilkan pesan kesalahan
                 return redirect()->back()->with('error', 'File tidak ditemukan');;
+                dd('File tidak ditemukan');
             }
         }
+        dd('File tidak ditemukan');
         return redirect()->back()->with('error', 'File tidak ditemukan di proses' . $id_level);
     }
 }
