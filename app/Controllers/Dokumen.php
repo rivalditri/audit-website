@@ -30,15 +30,16 @@ class Dokumen extends BaseController
                     'created_by' => $user,
                 ];
                 $row = $this->dokumen_model->insertDokumen($data);
-                if (!$row) {
+                if ($row) {
                     session()->setFlashdata('success', 'File berhasil diupload');
                     $this->response->setStatusCode(201, 'Created');
                 } else {
+                    session()->setFlashdata('failed', 'something went wrong');
                     $this->response->setStatusCode(400, 'Bad Request');
                 }
             } else {
                 //error
-                session()->setFlashdata('failed', 'something went wrong');
+                session()->setFlashdata('failed', 'file tidak valid');
                 $this->response->setStatusCode(400, 'Bad Request');
             }
         } else {
