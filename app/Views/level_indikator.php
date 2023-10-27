@@ -97,17 +97,31 @@
                                             <p class="mb-0 fw-normal"><?= $level->nama_level == 'Level 1' ? '100%' : $csatker[$level->id_level_kapabilitas] . '%' ?></p>
                                         </td>
                                         <td class="border-bottom-0 column-very-small">
-                                            <a href="/levelKriteria/<?= $level->id_level_kapabilitas ?>">
+                                            <?php
+                                            $levelkapabilitas = substr($level->id_level_kapabilitas, 0, 5);
+                                            $idprev = intval(explode('L', $level->id_level_kapabilitas)[1]) - 1;
+                                            $id_prev_level = $levelkapabilitas . $idprev;
+                                            ?>
+                                            <?php if ($level->nama_level == 'Level 1' || $level->nama_level == 'Level 2' ||  $csatker[$id_prev_level] > 50 && $cpu[$id_prev_level] > 50 || session()->get('role') == '1') { ?>
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <a href="/levelKriteria/<?= $level->id_level_kapabilitas ?>" class="text-white">
+                                                        Detail
+                                                    </a>
+                                                </button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
                                                     Detail
                                                 </button>
-                                            </a>
+                                            <?php }  ?>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
+                    <h6 class="fw-normal mt-4">
+                        Silahkan lengkapi capaian unit dan capaian statker hingga 50% agar dapat mengisi level capaian selanjutnya
+                    </h6>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@ class Indikator extends BaseController
 {
     protected $indikator_model;
     protected $aspek_model;
-    
+
     public function __construct()
     {
         $this->indikator_model = new Indikator_model();
