@@ -7,7 +7,11 @@
 
 <!--  Main wrapper -->
 <div class="container-fluid">
-    <?php if (session()->has('success')) { ?>
+    <?php
+
+    use function PHPUnit\Framework\containsEqual;
+
+    if (session()->has('success')) { ?>
         <div class="alert alert-success">
             <?php echo session()->get('success'); ?>
         </div>
@@ -116,7 +120,6 @@
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal<?= $proses->id_level_kriteria ?>">
                                                         <i class="ti ti-upload"></i>
                                                     </button>
-
                                                     <div class="modal fade" id="uploadModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -151,20 +154,22 @@
                                             <?php else : ?>
                                                 <?php if (str_contains($proses->deskripsi_dokumen, "Tidak ada work product")) : ?>
                                                     <em>None</em>
+                                                <?php elseif (str_contains($komentar[$proses->id_level_kriteria], "-")) : ?>
+                                                    <em>User Belum Upload</em>
                                                 <?php else : ?>
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
                                                             <i class="ti ti-download"></i>
                                                         </a>
                                                     </button>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal<?= $proses->id_level_kriteria ?>">
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validasiModal<?= $proses->id_level_kriteria ?>">
                                                         <i class="ti ti-edit"></i>
                                                     </button>
-                                                    <div class="modal fade" id="detailModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="validasiModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="validasiModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="detailModalLabel">Ubah Data</h1>
+                                                                    <h1 class="modal-title fs-5" id="validasiModalLabel">Ubah Data</h1>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <form action="/validasi" method="post">
@@ -175,26 +180,26 @@
                                                                         <label for="status" class="mb-2 fs-5 fw-semibold">Status</label>
                                                                         <div class="mb-3">
                                                                             <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="status" value="1" id="status1" checked>
+                                                                                <input class="form-check-input" type="radio" name="status" value="1" id="status1" <?= ($status[$proses->id_level_kriteria] == 1) ? 'checked' : ''; ?>>
                                                                                 <label class="form-check-label" for="status1">
                                                                                     Under Review
                                                                                 </label>
                                                                             </div>
                                                                             <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="status" value="2" id="status2">
+                                                                                <input class="form-check-input" type="radio" name="status" value="2" id="status2" <?= ($status[$proses->id_level_kriteria] == 2) ? 'checked' : ''; ?>>
                                                                                 <label class="form-check-label" for="status2">
                                                                                     Valid
                                                                                 </label>
                                                                             </div>
                                                                             <div class="form-check form-check-inline">
-                                                                                <input class="form-check-input" type="radio" name="status" value="3" id="status3">
+                                                                                <input class="form-check-input" type="radio" name="status" value="3" id="status3" <?= ($status[$proses->id_level_kriteria] == 3) ? 'checked' : ''; ?>>
                                                                                 <label class="form-check-label" for="status3">
                                                                                     Tidak Valid
                                                                                 </label>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-floating">
-                                                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px;" name="komentar"></textarea>
+                                                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 200px;" name="komentar"><?= str_contains($komentar[$proses->id_level_kriteria], "this document need to be reviewed") ? "" : $komentar[$proses->id_level_kriteria] ?></textarea>
                                                                             <label for="floatingTextarea">Comments</label>
                                                                         </div>
                                                                     </div>
