@@ -20,11 +20,12 @@ class Indikator extends BaseController
     {
         $data['title'] = "Indikator";
         $data['activeMenu'] = "validasi";
-
-        $indikator = $this->indikator_model->where('id_aspek', $id_aspek)->findAll();
+        $indikators = $this->indikator_model->where('id_aspek', $id_aspek)->findAll();
+        $level = $this->hitungLevel($id_aspek);
+        $data['level'] = $level;
         $aspek = $this->aspek_model->where('id_aspek', $id_aspek)->first();
         $data['aspek'] = $aspek->aspek;
-        $data['dataIndikator'] = $indikator;
+        $data['dataIndikator'] = $indikators;
         return view('indikator', $data);
     }
 }

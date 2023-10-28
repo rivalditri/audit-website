@@ -56,7 +56,7 @@
                                             <h6 class="fw-semibold mb-1"><?= $indikator->indikator ?></h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">1</p>
+                                            <p class="mb-0 fw-normal"><?= $level[$indikator->id_indikator] ?></p>
                                         </td>
                                         <td class="border-bottom-0">
                                             <a href="/levelIndikator/<?= $indikator->id_indikator ?>">
