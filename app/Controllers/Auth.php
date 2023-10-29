@@ -66,23 +66,47 @@ class Auth extends BaseController
             $this->googleClient->setAccessToken($token['access_token']);
             $googleService = new Oauth2($this->googleClient);
             $data = $googleService->userinfo->get();
+            $row = $this->users->where('email', $data['email'])->first();
 
-            $row = [
-                'id_user' => $data['id'],
-                'email' => $data['email'],
-                'nama_unit' => $data['name'],
-                'inisial' => $data['family_name'],
-                'created_by' => 'admin',
-            ];
-            $this->users->save($row);
+            if ($row == null) {
+                session()->setFlashdata('failed', 'User tidak ditemukan');
+                return redirect()->to(base_url('/'));
+            } else {
+                if ($row->is_admin == 1) {
+                    $data = [
+                        'id_user' => $row->id_user,
+                        'user' => $row->inisial,
+                        'role' => $row->is_admin,
+                    ];
+                    session()->set($data);
+                    return redirect()->to(base_url('/admin'));
+                } else if ($row->is_admin == 0) {
+                    $data = [
+                        'id_user' => $row->id_user,
+                        'user' => $row->inisial,
+                        'role' => 0
+                    ];
+                    session()->set($data);
+                    return redirect()->to(base_url('/aspek/' . $row->id_user));
+                }
+            }
 
-            $dataSession = [
-                'id_user' => $data['id'],
-                'user' => $data['name'],
-                'role' => 0
-            ];
-            session()->set($dataSession);
-            return redirect()->to(base_url('/aspek/' . $data['id']));
+            // $row = [
+            //     'id_user' => $data['id'],
+            //     'email' => $data['email'],
+            //     'nama_unit' => $data['name'],
+            //     'inisial' => $data['family_name'],
+            //     'created_by' => 'admin',
+            // ];
+            // $this->users->save($row);
+
+            // $dataSession = [
+            //     'id_user' => $data['id'],
+            //     'user' => $data['name'],
+            //     'role' => 0
+            // ];
+            // session()->set($dataSession);
+            // return redirect()->to(base_url('/aspek/' . $data['id']));
         }
     }
 
