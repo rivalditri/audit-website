@@ -52,7 +52,7 @@
                                             <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">5</p>
+                                            <p class="mb-0 fw-normal"><?= $maturitas[$aspek->id_aspek] ?></p>
                                         </td>
                                         <td class="border-bottom-0">
                                             <a href="/indikator/<?= $aspek->id_aspek ?>">
