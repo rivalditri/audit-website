@@ -24,6 +24,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'authguard'     => \App\Filters\Authguard::class,
+        'adminguard'    => \App\Filters\Adminguard::class,
     ];
 
     /**
@@ -66,5 +68,23 @@ class Filters extends BaseConfig
      * Example:
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
-    public array $filters = [];
+    public array $filters = [
+        'authguard' => [
+            'before' => [
+                'aspek/*',
+                'indikator/*',
+                'levelIndikator/*',
+                'levelKriteria/*',
+                'dokumen',
+                'download/*',
+            ],
+        ],
+        'adminguard' => [
+            'before' => [
+                'admin',
+                'users',
+                'validasi',
+            ],
+        ],
+    ];
 }
