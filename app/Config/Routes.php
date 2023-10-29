@@ -14,7 +14,7 @@ $routes->get('/users', 'admin\User::index');
 $routes->get('/indikator/(:num)', 'indikator::index/$1');
 $routes->get('/levelIndikator/(:segment)', 'levelIndikator::index/$1');
 $routes->get('/levelKriteria/(:segment)', 'levelKriteria::index/$1');
-$routes->post('/auth', 'Auth::login');
+// $routes->post('/auth', 'Auth::login');
 $routes->post('/authGoogle', 'Auth::login');
 $routes->get('/logout', 'Auth::logout');
 $routes->post('/dokumen', 'Dokumen::upload');
