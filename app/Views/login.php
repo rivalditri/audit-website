@@ -23,15 +23,16 @@
                 </a>
                 <p class="text-center">Maturity Blu</p>
                 <form action="<?= base_url('/auth') ?>" method="post">
-
-                  <label for="username" class="form-label">Username</label>
+                  <label for="username" class="form-label">Username (Inisial Fakultas)</label>
                   <input name="username" type="text" class="form-control" id="username" aria-describedby="text">
-
                   <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <input name="password" type="password" class="form-control" id="password">
                   </div>
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
+                  <div class="d-flex align-items-center justify-content-center mb-4">
+                    <a class="btn btn-danger w-100 py-8 fs-4 rounded-2" href="<?= $link; ?>" target="_blank">Login with Google</a>
+                  </div>
                   <div class="d-flex align-items-center justify-content-center">
                     <a class="text-primary fw-bold ms-2" href="<?php echo site_url("register") ?>">Create an account</a>
                   </div>

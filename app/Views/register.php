@@ -22,26 +22,22 @@
                                     <img src="img/logo-uin.png" width="180" alt="">
                                 </a>
                                 <p class="text-center">Maturity Blu</p>
-                                <form>
+                                <form action="<?= base_url('/register') ?>" method="post">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input name="email" type="email" class="form-control" id="email" aria-describedby="email">
+                                    </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="nama" aria-describedby="nama">
+                                        <input name="nama" type="text" class="form-control" id="nama" aria-describedby="nama">
                                     </div>
                                     <div class="mb-3">
                                         <label for="inisial" class="form-label">Inisial</label>
-                                        <input type="text" class="form-control" id="inisial" aria-describedby="inisial">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" aria-describedby="email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="status" class="form-label">Status</label>
-                                        <input type="number" class="form-control" id="status" aria-describedby="status">
+                                        <input name="inisial" type="text" class="form-control" id="inisial" aria-describedby="inisial">
                                     </div>
                                     <div class="mb-4">
                                         <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password">
+                                        <input name="password" type="password" class="form-control" id="password">
                                     </div>
                                     <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
                                     <div class="d-flex align-items-center justify-content-center">
