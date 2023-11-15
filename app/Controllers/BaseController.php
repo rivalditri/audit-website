@@ -76,7 +76,7 @@ abstract class BaseController extends Controller
     }
     public function capaian($id_indikator)
     {
-        // dd($id_indikator);
+        $id_user = session()->get('id_user');
         $cpu = array();
         $csatker = array();
         $levelindikator = $this->levelIndikator_model->getLevel($id_indikator);
@@ -84,7 +84,7 @@ abstract class BaseController extends Controller
             $result = 0;
             $idLevel = $level->id_level_kapabilitas;
             $jumlah = $this->levelProses_model->countProses($idLevel)->jumlah_proses;
-            $count = $this->dokumen_model->getUploadedDocument($idLevel);
+            $count = $this->dokumen_model->getUploadedDocument($idLevel, $id_user);
             foreach ($count as $value) {
                 $id_file = $value->id_file_dokumen;
                 $result += $this->taskValidation_model->countValidDoc($id_file)->validCount;

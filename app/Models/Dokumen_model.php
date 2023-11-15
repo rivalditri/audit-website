@@ -51,18 +51,34 @@ class Dokumen_model extends Model
             return $this->db->table('task_validation')->insert($data_validation);
         }
     }
-    public function getIdFile($id_proses)
+
+    public function getFile($id_level)
     {
         $builder = $this->db->table($this->table);
-        $builder->select('id_file_dokumen')->where('id_level_kriteria', $id_proses)->orderBy('id_file_dokumen', 'DESC')->limit(1);
+        $builder->select('id_file_dokumen')
+            ->where('id_level_kriteria', $id_level)
+            ->where('deleted_at', null)
+            ->orderBy('id_file_dokumen', 'DESC')->limit(1);
         $query = $builder->get();
         return $query->getRow();
     }
-    public function getUploadedDocument($id_level)
+
+    public function getIdFile($id_proses, $id_user)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('id_file_dokumen')->where('id_level_kriteria', $id_proses)
+            ->where('id_user', $id_user)
+            ->where('deleted_at', null)
+            ->orderBy('id_file_dokumen', 'DESC')->limit(1);
+        $query = $builder->get();
+        return $query->getRow();
+    }
+    public function getUploadedDocument($id_level, $id_user)
     {
         $builder = $this->db->table('file_dokumen');
         $builder->select('id_file_dokumen, id_level_kriteria')
             ->like('id_level_kriteria', $id_level)
+            ->where('id_user', $id_user)
             ->where('deleted_at IS NULL');
         $query = $builder->get();
         $result = $query->getResult();

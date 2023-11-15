@@ -28,9 +28,15 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
+                    <h3 class="fw-semibold mb-4">
+                        <?= session()->get('nama_unit') ?>
+                    </h3>
+                    <h4 class="fw-semibold mb-4">
+                        Level Kriteria
+                    </h4>
                     <div class="d-flex justify-content-between">
                         <h5 class="flex-grow-1 card-title fw-semibold mb-4">
-                            <?= session()->get('nama_unit') ?>
+                            <?= $level ?>
                         </h5>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -41,17 +47,6 @@
                             </ol>
                         </nav>
                     </div>
-                    <h3 class="fw-semibold mb-4">
-                        <?= $aspek ?>
-                    </h3>
-                    <h5 class="fw-semibold mb-4">
-                        <span class="text-primary"> Indikator</span>
-                        <span><i class="ti ti-arrow-right"></i></span>
-                        <?= $indikator ?>
-                    </h5>
-                    <h5 class="fw-semibold mb-4">
-                        <?= $level ?>
-                    </h5>
                     <div class="border border-1 border-primary mb-4 p-3 rounded-2">
                         <h5 class="fw-semibold mb-2">
                             Kriteria :
@@ -62,7 +57,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 align-middle table-bordered">
+                        <table class="table text-nowrap mb-0 align-middle table-bordered border-dark table-striped">
                             <thead class="text-dark fs-4">
                                 <tr class="text-center">
                                     <th class="border-bottom-0">

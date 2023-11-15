@@ -10,6 +10,9 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
+                    <h3 class="fw-semibold mb-4">
+                        <?= session()->get('nama_unit') ?>
+                    </h3>
                     <div class="d-flex justify-content-between">
                         <h5 class="flex-grow-1 card-title fw-semibold mb-4">
                             Aspek
@@ -20,31 +23,28 @@
                             </ol>
                         </nav>
                     </div>
-                    <h3 class="fw-semibold mb-4">
-                        <?= session()->get('nama_unit') ?>
-                    </h3>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle table-bordered border-dark table-striped">
                             <thead class="text-dark fs-4">
                                 <tr>
-                                    <th class="border-bottom-0">
+                                    <th scope="col" class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">No</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th scope="col" class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Aspek</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th scope="col" class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Maturitas</h6>
                                     </th>
-                                    <th class="border-bottom-0">
+                                    <th scope="col" class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="table-group-divider">
                                 <?php $no = 0;
                                 foreach ($dataAspek as $aspek) : $no++ ?>
-                                    <tr>
+                                    <tr scope="row" class="border-bottom border-dark">
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0"><?= $no ?></h6>
                                         </td>
