@@ -11,9 +11,9 @@
             <div class="card w-100">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between">
-                        <h5 class="flex-grow-1 card-title fw-semibold mb-4">
+                        <h3 class="flex-grow-1 card-title fw-semibold mb-4">
                             <?= session()->get('nama_unit') ?>
-                        </h5>
+                        </h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('id_user') ?>">Aspek</a></li>
@@ -22,16 +22,11 @@
                             </ol>
                         </nav>
                     </div>
-                    <h3 class="fw-semibold mb-4">
-                        <?= $aspek ?>
-                    </h3>
                     <h5 class="fw-semibold mb-4">
-                        <span class="text-primary"> Indikator</span>
-                        <span><i class="ti ti-arrow-right"></i></span>
-                        <?= $indikator ?>
+                        Level Kapabilitas
                     </h5>
                     <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 align-middle table-bordered">
+                        <table class="table text-nowrap mb-0 align-middle table-striped">
                             <thead class="text-dark fs-4">
                                 <tr class="text-center">
                                     <th class="border-bottom-0">
@@ -54,9 +49,9 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="table-group-divider">
                                 <?php foreach ($dataLevel as $level) : ?>
-                                    <tr class="text-center">
+                                    <tr class="text-center border-bottom border-dark">
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0"><?= $level->nama_level ?></h6>
                                         </td>

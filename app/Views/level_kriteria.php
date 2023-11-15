@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 align-middle table-bordered">
+                        <table class="table text-nowrap mb-0 align-middle table-bordered border-dark">
                             <thead class="text-dark fs-4">
                                 <tr class="text-center">
                                     <th class="border-bottom-0">

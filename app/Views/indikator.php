@@ -10,6 +10,9 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
+                    <h3 class="fw-semibold mb-4">
+                        <?= session()->get('nama_unit') ?>
+                    </h3>
                     <div class="d-flex justify-content-between">
                         <h5 class="flex-grow-1 card-title fw-semibold mb-4">
                             Indikator
@@ -17,18 +20,12 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('id_user') ?>">Aspek</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Indikator</li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= $aspek ?></li>
                             </ol>
                         </nav>
                     </div>
-                    <h3 class="fw-semibold mb-4">
-                        <?= session()->get('nama_unit') ?>
-                    </h3>
-                    <h5 class="fw-semibold mb-4">
-                        <?= $aspek ?>
-                    </h5>
                     <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 align-middle  table-bordered">
+                        <table class="table text-nowrap mb-0 align-middle table-striped">
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th class="border-bottom-0">
@@ -45,10 +42,10 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="table-group-divider">
                                 <?php $no = 0;
                                 foreach ($dataIndikator as $indikator) : $no++ ?>
-                                    <tr>
+                                    <tr class="border-bottom border-dark">
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0"><?= $indikator->id_indikator ?></h6>
                                         </td>
