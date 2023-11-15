@@ -24,7 +24,7 @@
                         <?= session()->get('nama_unit') ?>
                     </h3>
                     <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 align-middle  table-bordered">
+                        <table class="table text-nowrap mb-0 align-middle table-bordered border-dark table-striped">
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th class="border-bottom-0">

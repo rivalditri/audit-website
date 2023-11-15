@@ -22,8 +22,8 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="<?php echo site_url("/") ?>" class="text-nowrap logo-img">
-                        <img src="<?= base_url() ?>/img/logo-uin.png" width="45" alt="" />
+                    <a href="<?php echo site_url("/") ?>" class="text-nowrap logo-img mt-3">
+                        <img src="<?= base_url() ?>/img/logo-uin.png" width="100" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -114,7 +114,7 @@
     <script src="<?= base_url() ?>/assets/js/sidebarmenu.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/simplebar/dist/simplebar.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 

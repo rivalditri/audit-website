@@ -30,9 +30,6 @@
                                         <h6 class="fw-semibold mb-0">Email</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Status</h6>
-                                    </th>
-                                    <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
                                     </th>
                                 </tr>
@@ -52,9 +49,6 @@
                                         </td>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0 fs-4"><?= $user->email ?></h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0 fs-4"><?= ($user->is_keuangan == 1) ? "Active" : "Non Active" ?></h6>
                                         </td>
                                         <td class="border-bottom-0">
                                             <div class="row">

@@ -17,18 +17,16 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('id_user') ?>">Aspek</a></li>
-                                <li class="breadcrumb-item"><a href="/indikator/<?= explode('/', explode('.', uri_string())[0])[1] ?>">Indikator</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><?= $aspek ?></li>
+                                <li class="breadcrumb-item"><a href="/indikator/<?= explode('/', explode('.', uri_string())[0])[1] ?>"><?= $aspek ?></a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= $indikator ?></li>
                             </ol>
                         </nav>
                     </div>
                     <h3 class="fw-semibold mb-4">
-                        <?= $aspek ?>
+                        Level Kriteria
                     </h3>
-                    <h5 class="fw-semibold mb-4">
-                        <span class="text-primary"> Indikator</span>
-                        <span><i class="ti ti-arrow-right"></i></span>
-                        <?= $indikator ?>
+                    <h5 class="fw-semibold mb-4 text-primary">
+                        <?= $aspek ?>
                     </h5>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle table-bordered">

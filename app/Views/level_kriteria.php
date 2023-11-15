@@ -35,8 +35,8 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('id_user') ?>">Aspek</a></li>
-                                <li class="breadcrumb-item"><a href="/indikator/<?= explode('/', explode('.', uri_string())[0])[1] ?>">Indikator</a></li>
-                                <li class="breadcrumb-item"><a href="/levelIndikator/<?= explode('/', explode('-', uri_string())[0])[1] ?>"><?= $aspek ?></a></li>
+                                <li class="breadcrumb-item"><a href="/indikator/<?= explode('/', explode('.', uri_string())[0])[1] ?>"><?= $aspek ?></a></li>
+                                <li class="breadcrumb-item"><a href="/levelIndikator/<?= explode('/', explode('-', uri_string())[0])[1] ?>"><?= $indikator ?></a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?= $level ?></li>
                             </ol>
                         </nav>
@@ -117,9 +117,15 @@
                                                 <?php if (str_contains($proses->deskripsi_dokumen, "Tidak ada work product")) : ?>
                                                     <em>None</em>
                                                 <?php else : ?>
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal<?= $proses->id_level_kriteria ?>">
-                                                        <i class="ti ti-upload"></i>
-                                                    </button>
+                                                    <?php if ($status[$proses->id_level_kriteria] == 2) : ?>
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal<?= $proses->id_level_kriteria ?>" disabled>
+                                                            <i class="ti ti-upload"></i>
+                                                        </button>
+                                                    <?php else : ?>
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal<?= $proses->id_level_kriteria ?>">
+                                                            <i class="ti ti-upload"></i>
+                                                        </button>
+                                                    <?php endif ?>
                                                     <div class="modal fade" id="uploadModal<?= $proses->id_level_kriteria ?>" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -145,11 +151,19 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <?php if (str_contains($komentar[$proses->id_level_kriteria], "-")) : ?>
                                                         <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
-                                                            <i class="ti ti-download"></i>
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
+                                                                <i class="ti ti-download"></i>
+                                                            </button>
                                                         </a>
-                                                    </button>
+                                                    <?php else : ?>
+                                                        <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                <i class="ti ti-download"></i>
+                                                            </button>
+                                                        </a>
+                                                    <?php endif ?>
                                                 <?php endif ?>
                                             <?php else : ?>
                                                 <?php if (str_contains($proses->deskripsi_dokumen, "Tidak ada work product")) : ?>
@@ -157,11 +171,19 @@
                                                 <?php elseif (str_contains($komentar[$proses->id_level_kriteria], "-")) : ?>
                                                     <em>User Belum Upload</em>
                                                 <?php else : ?>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <?php if (str_contains($komentar[$proses->id_level_kriteria], "-")) : ?>
                                                         <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
-                                                            <i class="ti ti-download"></i>
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
+                                                                <i class="ti ti-download"></i>
+                                                            </button>
                                                         </a>
-                                                    </button>
+                                                    <?php else : ?>
+                                                        <a href="/download/<?= $proses->id_level_kriteria ?>" class="text-white">
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                <i class="ti ti-download"></i>
+                                                            </button>
+                                                        </a>
+                                                    <?php endif ?>
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validasiModal<?= $proses->id_level_kriteria ?>">
                                                         <i class="ti ti-edit"></i>
                                                     </button>

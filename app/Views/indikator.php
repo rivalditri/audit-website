@@ -12,19 +12,19 @@
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between">
                         <h5 class="flex-grow-1 card-title fw-semibold mb-4">
-                            Indikator
+                            <?= session()->get('nama_unit') ?>
                         </h5>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('id_user') ?>">Aspek</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Indikator</li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= $aspek ?></li>
                             </ol>
                         </nav>
                     </div>
                     <h3 class="fw-semibold mb-4">
-                        <?= session()->get('nama_unit') ?>
+                        Indikator
                     </h3>
-                    <h5 class="fw-semibold mb-4">
+                    <h5 class="fw-semibold mb-4 text-primary">
                         <?= $aspek ?>
                     </h5>
                     <div class="table-responsive">
