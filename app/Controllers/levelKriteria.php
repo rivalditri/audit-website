@@ -24,11 +24,11 @@ class levelKriteria extends BaseController
         $proses = $this->levelProses_model->getAllProses($id_level);
         $komentar = array();
         $status = array();
-
+        $id_user = session()->get('id_user');
 
         foreach ($proses as $levelKriteria) {
             $idLevel = $levelKriteria->id_level_kriteria;
-            $idFile = $this->dokumen_model->getIdFile($idLevel);
+            $idFile = $this->dokumen_model->getIdFile($idLevel, $id_user);
             $status[$idLevel] = "-";
             $komentar[$idLevel] = "-";
             if ($idFile) {

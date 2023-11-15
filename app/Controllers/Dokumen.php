@@ -53,7 +53,7 @@ class Dokumen extends BaseController
     }
     public function download($id_level)
     {
-        $idFile = $this->dokumen_model->getIdFile($id_level);
+        $idFile = $this->dokumen_model->getFile($id_level);
         if ($idFile) {
             $dokumen = $this->dokumen_model->find($idFile->id_file_dokumen);
             // Tentukan path file yang akan diunduh
@@ -64,11 +64,9 @@ class Dokumen extends BaseController
                 return $this->response->download($path, null);
             } else {
                 // Jika file tidak ditemukan, tampilkan pesan kesalahan
-                return redirect()->back()->with('error', 'File tidak ditemukan');;
-                dd('File tidak ditemukan');
+                return redirect()->back()->with('error', 'File tidak ditemukan');
             }
         }
-        dd('File tidak ditemukan');
         return redirect()->back()->with('error', 'File tidak ditemukan di proses' . $id_level);
     }
 }
