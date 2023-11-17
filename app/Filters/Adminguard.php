@@ -27,8 +27,12 @@ class Adminguard implements FilterInterface
     {
         //
         if (session()->get('role') != 1) {
-            return redirect()->to(base_url('/'));
+            $response = service('response');
+            $response->setStatusCode(403);
+            session()->setFlashdata('failed', 'Anda tidak memiliki akses');
+            return $response->redirect(site_url('/'));
         }
+        return request();
     }
 
     /**

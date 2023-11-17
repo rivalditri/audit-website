@@ -82,7 +82,7 @@ class Filters extends BaseConfig
         'adminguard' => [
             'before' => [
                 'admin',
-                'users',
+                'users/*',
                 'validasi',
             ],
         ],

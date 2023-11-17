@@ -34,7 +34,7 @@
                                         <h1 class="modal-title fs-5" id="uploadModalLabel">Add User</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="/adduser" method="post" id="form-upload">
+                                    <form action="/users/add" method="post" id="form-upload">
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama Unit</label>
@@ -47,6 +47,13 @@
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input class="form-control" id="email" type="text" name="email">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="role" class="form-label">Role</label>
+                                                <select class="form-select" aria-label="role" name="role">
+                                                    <option value=1>Admin</option>
+                                                    <option value=0>Non Admin</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -114,11 +121,8 @@
                                                                     <h1 class="modal-title fs-5" id="uploadModalLabel">Edit User</h1>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <form action="/editUser/<?= $user->id_user ?>" method="post" id="form-upload">
+                                                                <form action="/users/edit/<?= $user->id_user ?>" method="post" id="form-upload">
                                                                     <div class="modal-body">
-                                                                        <div class="mb-3">
-                                                                            <input class="form-control" type="text" name="id" value="<?= $user->id_user ?>">
-                                                                        </div>
                                                                         <div class="mb-3">
                                                                             <label for="nama" class="form-label">Nama Unit</label>
                                                                             <input class="form-control" id="nama" type="text" name="nama_unit" value="<?= $user->nama_unit ?>">
@@ -163,10 +167,10 @@
                                                                     <p class="overflow-auto">Apakah yakin anda ingin menghapus user <?= $user->nama_unit ?></p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <a href="/deleteUser/<?= $user->id_user ?>">
+                                                                    <form action="/users/delete/<?= $user->id_user ?>" method="post">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                                         <button type="submit" class="btn btn-primary btn-upload">Delete</button>
-                                                                    </a>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>

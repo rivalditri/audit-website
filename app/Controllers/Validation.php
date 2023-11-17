@@ -12,7 +12,7 @@ class Validation extends BaseController
         $komentar = $this->request->getPost('komentar');
 
         //get id file from id proses
-        $id_file = $this->dokumen_model->getIdFile($id_proses)->id_file_dokumen;
+        $id_file = $this->dokumen_model->getIdFile($id_proses, session()->get('user'))->id_file_dokumen;
         $id = $this->taskValidation_model->getValidation($id_file)->id_task_validation;
 
         $data = [
