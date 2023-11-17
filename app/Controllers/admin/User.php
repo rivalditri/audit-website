@@ -18,8 +18,27 @@ class User extends BaseController
         return view('user', $data);
     }
 
-    public function create()
+    public function adduser()
     {
+        $email = $this->request->getPost('email');
+        $nama_unit = $this->request->getPost('nama_unit');
+        $inisial = $this->request->getPost('inisial');
+
+        $data = [
+            'id_user' => $inisial,
+            'email' => $email,
+            'nama_unit' => $nama_unit,
+            'inisial' => $inisial,
+            'is_admin' => 0,
+            'is_keuangan' => 1,
+            'created_by' => 'admin'
+        ];
+
+        $user = new User_model();
+        $tabelUser = "m_user";
+
+        $user->saveUser($tabelUser, $data);
+        return redirect()->back();
     }
 
     public function edit($id)

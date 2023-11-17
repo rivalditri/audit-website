@@ -20,9 +20,44 @@
         <div class="col-lg d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4">
-                        User
-                    </h5>
+                    <div class="d-flex justify-content-between mb-3">
+                        <h5 class="flex-grow-1 card-title fw-semibold mb-4">
+                            User
+                        </h5>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambahModal">
+                            Add User
+                        </button>
+                        <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="uploadModalLabel">Add User</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="/adduser" method="post" id="form-upload">
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="nama" class="form-label">Nama Unit</label>
+                                                <input class="form-control" id="nama" type="text" name="nama_unit">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="inisial" class="form-label">Inisial</label>
+                                                <input class="form-control" id="inisial" type="text" name="inisial">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input class="form-control" id="email" type="text" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-primary btn-upload">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle table-bordered">
                             <thead class="text-dark fs-4">
@@ -81,6 +116,9 @@
                                                                 </div>
                                                                 <form action="/editUser/<?= $user->id_user ?>" method="post" id="form-upload">
                                                                     <div class="modal-body">
+                                                                        <div class="mb-3">
+                                                                            <input class="form-control" type="text" name="id" value="<?= $user->id_user ?>">
+                                                                        </div>
                                                                         <div class="mb-3">
                                                                             <label for="nama" class="form-label">Nama Unit</label>
                                                                             <input class="form-control" id="nama" type="text" name="nama_unit" value="<?= $user->nama_unit ?>">
