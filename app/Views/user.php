@@ -5,6 +5,16 @@
 
 <!--  Main wrapper -->
 <div class="container-fluid">
+    <?php
+    if (session()->has('success')) { ?>
+        <div class="alert alert-success">
+            <?php echo session()->get('success'); ?>
+        </div>
+    <?php } else if (session()->has('failed')) { ?>
+        <div class="alert alert-warning">
+            <?php echo session()->get('failed'); ?>
+        </div>
+    <?php } ?>
     <!--  Row 1 -->
     <div class="row">
         <div class="col-lg d-flex align-items-stretch">
@@ -30,6 +40,9 @@
                                         <h6 class="fw-semibold mb-0">Email</h6>
                                     </th>
                                     <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Role</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
                                     </th>
                                 </tr>
@@ -51,6 +64,9 @@
                                             <h6 class="fw-semibold mb-0 fs-4"><?= $user->email ?></h6>
                                         </td>
                                         <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0 fs-4"><?= $user->is_admin == 1 ? "Admin" : "User" ?></h6>
+                                        </td>
+                                        <td class="border-bottom-0">
                                             <div class="row">
                                                 <div class="col">
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $user->id_user ?>">
@@ -63,7 +79,7 @@
                                                                     <h1 class="modal-title fs-5" id="uploadModalLabel">Edit User</h1>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <form action="/edituser" method="post" id="form-upload">
+                                                                <form action="/editUser/<?= $user->id_user ?>" method="post" id="form-upload">
                                                                     <div class="modal-body">
                                                                         <div class="mb-3">
                                                                             <label for="nama" class="form-label">Nama Unit</label>
@@ -78,10 +94,10 @@
                                                                             <input class="form-control" id="email" type="text" name="email" value="<?= $user->email ?>">
                                                                         </div>
                                                                         <div class="mb-3">
-                                                                            <label for="status" class="form-label">Status</label>
+                                                                            <label for="status" class="form-label">Status Admin</label>
                                                                             <select class="form-select" aria-label="status" name="status">
-                                                                                <option value="0" <?= ($user->is_keuangan == 0) ? 'selected' : ''; ?>>Active</option>
-                                                                                <option value="1" <?= ($user->is_keuangan == 0) ? 'selected' : ''; ?>>Non Active</option>
+                                                                                <option value=1 <?= ($user->is_admin == 0) ? 'selected' : ''; ?>>Admin</option>
+                                                                                <option value=0 <?= ($user->is_admin == 0) ? 'selected' : ''; ?>>Non Admin</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
@@ -110,7 +126,9 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary btn-upload">Delete</button>
+                                                                    <a href="/deleteUser/<?= $user->id_user ?>">
+                                                                        <button type="submit" class="btn btn-primary btn-upload">Delete</button>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>

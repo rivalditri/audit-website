@@ -66,16 +66,18 @@ class Auth extends BaseController
             $this->googleClient->setAccessToken($token['access_token']);
             $googleService = new Oauth2($this->googleClient);
             $data = $googleService->userinfo->get();
-            $row = $this->users->where('email', $data['email'])->first();
+            $row = $this->users->where('email', $data['email'])
+                ->where('delete_at', null)
+                ->first();
 
             if ($row == null) {
-                session()->setFlashdata('failed', 'User tidak ditemukan');
+                session()->setFlashdata('failed', 'User tidak ditemukan/inactive');
                 return redirect()->to(base_url('/'));
             } else {
                 if ($row->is_admin == 1) {
                     $data = [
                         'id_user' => $row->id_user,
-                        'user' => $row->inisial,
+                        'inisial' => $row->inisial,
                         'role' => $row->is_admin,
                     ];
                     session()->set($data);
@@ -83,7 +85,7 @@ class Auth extends BaseController
                 } else if ($row->is_admin == 0) {
                     $data = [
                         'id_user' => $row->id_user,
-                        'user' => $row->inisial,
+                        'inisial' => $row->inisial,
                         'role' => 0
                     ];
                     session()->set($data);

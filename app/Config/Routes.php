@@ -11,6 +11,8 @@ $routes->get('/', 'Auth::index');
 $routes->get('/aspek/(:segment)', 'aspek::index/$1');
 $routes->get('/admin', 'admin\home::index');
 $routes->get('/users', 'admin\User::index');
+$routes->post('/editUser/(:segment)', 'admin\User::edit/$1');
+$routes->get('/deleteUser/(:segment)', 'admin\User::delete/$1');
 $routes->get('/indikator/(:num)', 'indikator::index/$1');
 $routes->get('/levelIndikator/(:segment)', 'levelIndikator::index/$1');
 $routes->get('/levelKriteria/(:segment)', 'levelKriteria::index/$1');

@@ -21,7 +21,7 @@ class Dokumen extends BaseController
         ])) {
             $file = $this->request->getFile('file');
             if ($file->isValid() && !$file->hasMoved()) {
-                $name = "2023" . "_" . $user . "_" . $idlevel . "." . $file->getExtension();
+                $name = "2023" . "_" . session()->get('inisial') . "_" . $idlevel . "." . $file->getExtension();
                 $file->move($path, $name);
                 $data = [
                     'file_upload' => $file->getName(),
