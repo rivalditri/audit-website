@@ -76,7 +76,7 @@ abstract class BaseController extends Controller
     }
     public function capaian($id_indikator)
     {
-        $id_user = session()->get('id_user');
+        $id_user = session()->get('user');
         $cpu = array();
         $csatker = array();
         $levelindikator = $this->levelIndikator_model->getLevel($id_indikator);

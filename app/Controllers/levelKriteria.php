@@ -24,7 +24,7 @@ class levelKriteria extends BaseController
         $proses = $this->levelProses_model->getAllProses($id_level);
         $komentar = array();
         $status = array();
-        $id_user = session()->get('id_user');
+        $id_user = session()->get('user');
 
         foreach ($proses as $levelKriteria) {
             $idLevel = $levelKriteria->id_level_kriteria;

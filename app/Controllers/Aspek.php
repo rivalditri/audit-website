@@ -14,6 +14,7 @@ class Aspek extends BaseController
         $user = $this->user_model->where('id_user', $id_user)->first();
         $nama_unit = $user->nama_unit;
         session()->set('nama_unit', $nama_unit);
+        session()->set('user', $id_user);
         $aspeks = $this->aspek_model->findAll();
         foreach ($aspeks as $aspek) {
             $id_aspek = $aspek->id_aspek;
