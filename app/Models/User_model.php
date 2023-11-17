@@ -22,4 +22,22 @@ class User_model extends Model
         $query = $builder->get();
         return $query->getResult();
     }
+
+    function saveUser($tabel, $data)
+    {
+        $this->db->table($tabel)->insert($data);
+        return true;
+    }
+
+    function updateUser($table, $data, $where)
+    {
+        $this->db->table($table)->update($data, $where);
+        return true;
+    }
+
+    function removeUser($id)
+    {
+        $this->db->query("delete from m_user where id_user=" . $id);
+        return true;
+    }
 }
