@@ -97,6 +97,8 @@
                                             <?php if ($status[$proses->id_level_kriteria] == 2) { ?>
                                                 <button type="button" class="btn btn-success not-allow-button">Valid</button>
                                             <?php } else if ($status[$proses->id_level_kriteria] == 3) { ?>
+                                                <button type="button" class="btn btn-primary not-allow-button">Revisi</button>
+                                            <?php } else if ($status[$proses->id_level_kriteria] == 4) { ?>
                                                 <button type="button" class="btn btn-danger not-allow-button">Tidak Valid</button>
                                             <?php } else if ($status[$proses->id_level_kriteria] == 1) { ?>
                                                 <button type="button" class="btn btn-warning not-allow-button">Under Review</button>
@@ -211,6 +213,12 @@
                                                                             <div class="form-check form-check-inline">
                                                                                 <input class="form-check-input" type="radio" name="status" value="3" id="status3" <?= ($status[$proses->id_level_kriteria] == 3) ? 'checked' : ''; ?>>
                                                                                 <label class="form-check-label" for="status3">
+                                                                                    Revisi
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="form-check form-check-inline">
+                                                                                <input class="form-check-input" type="radio" name="status" value="4" id="status4" <?= ($status[$proses->id_level_kriteria] == 4) ? 'checked' : ''; ?>>
+                                                                                <label class="form-check-label" for="status4">
                                                                                     Tidak Valid
                                                                                 </label>
                                                                             </div>

@@ -22,3 +22,7 @@
 .not-allow-button {
     pointer-events: none;
 }
+
+.custom-text-color:hover {
+    color: #0d6efd; /* Warna teks yang diinginkan saat dihover */
+}

@@ -38,4 +38,12 @@ class Task_validation_model extends Model
         $query = $builder->get();
         return $query->getResult()[0]->status;
     }
+
+    public function getStatusDokumenAll()
+    {
+        $builder = $this->db->table('m_status_dokumen');
+        $builder->select('id_status_dokumen, status');
+        $query = $builder->get();
+        return $query->getResult();
+    }
 }

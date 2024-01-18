@@ -33,16 +33,10 @@
                                         <h6 class="fw-semibold mb-0">Level</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 column-small">Capaian Unit</h6>
+                                        <h6 class="fw-semibold mb-0">Presentase Dokumen Terisi</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 column-small">Presentase Capaian Unit</h6>
-                                    </th>
-                                    <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 column-small">Capaian Satker</h6>
-                                    </th>
-                                    <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 column-small">Presentase Capaian Satker</h6>
+                                        <h6 class="fw-semibold mb-0">Presentase Dokumen Tervalidasi</h6>
                                     </th>
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
@@ -55,67 +49,58 @@
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0"><?= $level->nama_level ?></h6>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <?php if ($level->nama_level == 'Level 1' || $cpu[$level->id_level_kapabilitas] > 50) : ?>
-                                                <button type="button" class="btn btn-primary not-allow-button">
-                                                    <span>
-                                                        <i class="ti ti-check"></i>
-                                                    </span>
-                                                </button>
-                                            <?php else : ?>
-                                                <button type="button" class="btn btn-danger not-allow-button">
-                                                    <span>
-                                                        <i class="ti ti-x"></i>
-                                                    </span>
-                                                </button>
-                                            <?php endif ?>
-                                        </td>
                                         <td class="border-bottom-0">
                                             <p class="mb-0 fw-normal"><?= $level->nama_level == 'Level 1' ? '100%' : $cpu[$level->id_level_kapabilitas] . '%' ?></p>
-                                        </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <?php if ($level->nama_level == 'Level 1' || $csatker[$level->id_level_kapabilitas] > 50) { ?>
-                                                <button type="button" class="btn btn-primary not-allow-button">
-                                                    <span>
-                                                        <i class="ti ti-check"></i>
-                                                    </span>
-                                                </button>
-                                            <?php } else { ?>
-                                                <button type="button" class="btn btn-danger not-allow-button">
-                                                    <span>
-                                                        <i class="ti ti-x"></i>
-                                                    </span>
-                                                </button>
-                                            <?php }  ?>
                                         </td>
                                         <td class="border-bottom-0">
                                             <p class="mb-0 fw-normal"><?= $level->nama_level == 'Level 1' ? '100%' : $csatker[$level->id_level_kapabilitas] . '%' ?></p>
                                         </td>
-                                        <td class="border-bottom-0 column-very-small">
-                                            <?php
-                                            $levelkapabilitas = substr($level->id_level_kapabilitas, 0, 5);
-                                            $idprev = intval(explode('L', $level->id_level_kapabilitas)[1]) - 1;
-                                            $id_prev_level = $levelkapabilitas . $idprev;
-                                            ?>
-                                            <?php if ($level->nama_level == 'Level 1' || $level->nama_level == 'Level 2' ||  $csatker[$id_prev_level] > 50 && $cpu[$id_prev_level] > 50 || session()->get('role') == '1') { ?>
-                                                <a href="/levelKriteria/<?= $level->id_level_kapabilitas ?>" class="text-white">
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <?php if (session()->get('role') == '0') { ?>
+                                            <td class="border-bottom-0 column-very-small">
+                                                <?php
+                                                $levelkapabilitas = substr($level->id_level_kapabilitas, 0, 5);
+                                                $idprev = intval(explode('L', $level->id_level_kapabilitas)[1]) - 1;
+                                                $id_prev_level = $levelkapabilitas . $idprev;
+                                                ?>
+                                                <?php if ($level->nama_level == 'Level 1' || $level->nama_level == 'Level 2' || $cpu[$id_prev_level] > 50 || session()->get('role') == '1') { ?>
+                                                    <a href="/levelKriteria/<?= $level->id_level_kapabilitas ?>" class="text-white">
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Detail
+                                                        </button>
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
                                                         Detail
                                                     </button>
-                                                </a>
-                                            <?php } else { ?>
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
-                                                    Detail
-                                                </button>
-                                            <?php }  ?>
-                                        </td>
+                                                <?php }  ?>
+                                            </td>
+                                        <?php } else if (session()->get('role') == '1') { ?>
+                                            <td class="border-bottom-0 column-very-small">
+                                                <?php
+                                                $levelkapabilitas = substr($level->id_level_kapabilitas, 0, 5);
+                                                $idprev = intval(explode('L', $level->id_level_kapabilitas)[1]) - 1;
+                                                $id_prev_level = $levelkapabilitas . $idprev;
+                                                ?>
+                                                <?php if ($level->nama_level == 'Level 1' || $level->nama_level == 'Level 2' ||  $csatker[$id_prev_level] > 50 || session()->get('role') == '0') { ?>
+                                                    <a href="/levelKriteria/<?= $level->id_level_kapabilitas ?>" class="text-white">
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Detail
+                                                        </button>
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
+                                                        Detail
+                                                    </button>
+                                                <?php }  ?>
+                                            </td>
+                                        <?php }  ?>
                                     </tr>
                                 <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
                     <h6 class="fw-normal mt-4">
-                        Silahkan lengkapi capaian unit dan capaian statker hingga 50% agar dapat mengisi level capaian selanjutnya
+                        Silahkan lengkapi dokumen terisi hingga 50% agar dapat mengisi level capaian selanjutnya
                     </h6>
                 </div>
             </div>

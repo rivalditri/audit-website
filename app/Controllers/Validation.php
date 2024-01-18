@@ -45,6 +45,11 @@ class Validation extends BaseController
         $this->taskValidation_model->find();
     }
 
+    public function getStatusDokumen()
+    {
+        $this->taskValidation_model->getStatusDokumenAll();
+    }
+
     public function index()
     {
         $data['title'] = "Register";
