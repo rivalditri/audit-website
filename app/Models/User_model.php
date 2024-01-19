@@ -18,7 +18,7 @@ class User_model extends Model
     public function getUsers()
     {
         $builder = $this->db->table('m_user');
-        $builder->select('*')->where('is_admin', 0);
+        $builder->select('*')->where('is_admin', 0)->where('delete_at', null);
         $query = $builder->get();
         return $query->getResult();
     }

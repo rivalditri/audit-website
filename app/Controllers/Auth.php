@@ -50,7 +50,7 @@ class Auth extends BaseController
                     $data = [
                         'id_user' => $row->id_user,
                         'inisial' => $row->inisial,
-                        'role' => $row->is_admin,
+                        'role' => 1,
                     ];
                     session()->set($data);
                     return redirect()->to(base_url('/admin'));

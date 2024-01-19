@@ -9,12 +9,11 @@ class Home extends BaseController
 {
     public function index()
     {
-        // dd("admin");
         $data['title'] = "Dashboard";
         $data['activeMenu'] = "validasi";
 
         $user = $this->user_model->getUsers();
-        $data['dataUser']= $user;
+        $data['dataUser'] = $user;
         return view('dashboard', $data);
     }
 }

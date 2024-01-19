@@ -17,6 +17,7 @@ class Dokumen_model extends Model
     {
         $existingdata = $this->db()->table($this->table)
             ->where('id_level_kriteria', $data['id_level_kriteria'])
+            ->where('id_user', $data['id_user'])
             ->get()->getRow();
         if (empty($existingdata)) {
             $this->db->table($this->table)->insert($data);
@@ -52,11 +53,12 @@ class Dokumen_model extends Model
         }
     }
 
-    public function getFile($id_level)
+    public function getFile($id_level, $id_user)
     {
         $builder = $this->db->table($this->table);
         $builder->select('id_file_dokumen')
             ->where('id_level_kriteria', $id_level)
+            ->where('id_user', $id_user)
             ->where('deleted_at', null)
             ->orderBy('id_file_dokumen', 'DESC')->limit(1);
         $query = $builder->get();

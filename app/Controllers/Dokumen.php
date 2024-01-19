@@ -7,7 +7,6 @@ class Dokumen extends BaseController
 
     public function upload()
     {
-        $idUser = session()->get('id_user');
         $user = session()->get('user');
         $idlevel = $this->request->getPost('id_level');
         $name = "";
@@ -25,7 +24,7 @@ class Dokumen extends BaseController
                 $file->move($path, $name);
                 $data = [
                     'file_upload' => $file->getName(),
-                    'id_user' => $idUser,
+                    'id_user' => $user,
                     'id_level_kriteria' => $idlevel,
                     'created_by' => $user,
                 ];
@@ -53,7 +52,8 @@ class Dokumen extends BaseController
     }
     public function download($id_level)
     {
-        $idFile = $this->dokumen_model->getFile($id_level);
+        $id_user = session()->get('user');
+        $idFile = $this->dokumen_model->getFile($id_level, $id_user);
         if ($idFile) {
             $dokumen = $this->dokumen_model->find($idFile->id_file_dokumen);
             // Tentukan path file yang akan diunduh
