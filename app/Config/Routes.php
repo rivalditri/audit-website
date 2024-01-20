@@ -9,6 +9,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('/', 'Auth::index');
 $routes->get('/aspek/(:segment)', 'Aspek::index/$1');
+$routes->get('/aspek/result/(:segment)', 'Aspek::result/$1');
 $routes->get('/admin', 'admin\Home::index');
 $routes->get('/users', 'admin\User::index');
 $routes->get('/overview', 'admin\Overview::index');

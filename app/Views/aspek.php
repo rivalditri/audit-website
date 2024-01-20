@@ -44,24 +44,70 @@
                             <tbody class="table-group-divider">
                                 <?php $no = 0;
                                 foreach ($dataAspek as $aspek) : $no++ ?>
-                                    <tr scope="row" class="border-bottom border-dark">
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-0"><?= $no ?></h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal"><?= $maturitas[$aspek->id_aspek] ?></p>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <a href="/indikator/<?= $aspek->id_aspek ?>">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    Detail
-                                                </button>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <?php if (session()->get('role') == 0) : ?>
+                                        <?php if ($kategori == "result") : ?>
+                                            <?php if ($aspek->id_aspek < 3) : ?>
+                                                <tr scope="row" class="border-bottom border-dark">
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0"><?= $no ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <p class="mb-0 fw-normal"><?= $maturitas[$aspek->id_aspek] ?></p>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <a href="/indikator/<?= $aspek->id_aspek ?>">
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                Detail
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php endif ?>
+                                        <?php elseif ($kategori == "process") : ?>
+                                            <?php if ($aspek->id_aspek > 2) : ?>
+                                                <tr scope="row" class="border-bottom border-dark">
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0"><?= $no - 2 ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <p class="mb-0 fw-normal"><?= $maturitas[$aspek->id_aspek] ?></p>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <a href="/indikator/<?= $aspek->id_aspek ?>">
+                                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                Detail
+                                                            </button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php endif ?>
+                                        <?php endif ?>
+                                    <?php else : ?>
+                                        <tr scope="row" class="border-bottom border-dark">
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-0"><?= $no ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <h6 class="fw-semibold mb-1"><?= $aspek->aspek ?></h6>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <p class="mb-0 fw-normal"><?= $maturitas[$aspek->id_aspek] ?></p>
+                                            </td>
+                                            <td class="border-bottom-0">
+                                                <a href="/indikator/<?= $aspek->id_aspek ?>">
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        Detail
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endif ?>
                                 <?php endforeach ?>
                             </tbody>
                         </table>

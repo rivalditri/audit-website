@@ -36,22 +36,35 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Home</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="
-                            <?php
-                            if (session()->get('role') == 0) {
-                                echo site_url("/aspek/" . session()->get('id_user'));
-                            } else {
-                                echo site_url("admin");
-                            }
-                            ?>" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-article"></i>
-                                </span>
-                                <span class="hide-menu">Validasi</span>
-                            </a>
-                        </li>
+                        <?php if (session()->get('role') == 0) : ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link <?php if (in_array($activeMenu, ['result'])) echo "active" ?>" href="
+                            <?php echo site_url("/aspek/result/" . session()->get('id_user')); ?>" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-pinned"></i>
+                                    </span>
+                                    <span class="hide-menu">Result Base</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link <?php if (in_array($activeMenu, ['process'])) echo "active" ?>" href="
+                            <?php echo site_url("/aspek/process/" . session()->get('id_user')); ?>" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-loader"></i>
+                                    </span>
+                                    <span class="hide-menu">Process Base</span>
+                                </a>
+                            </li>
+                        <?php endif ?>
                         <?php if (session()->get('role') == 1) : ?>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="<?php echo site_url("admin"); ?>" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-article"></i>
+                                    </span>
+                                    <span class="hide-menu">Validasi</span>
+                                </a>
+                            </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link <?php if (in_array($activeMenu, ['user'])) echo "active" ?>" href="<?php echo site_url("users") ?>" aria-expanded="false">
                                     <span>
@@ -60,8 +73,6 @@
                                     <span class="hide-menu">Data User</span>
                                 </a>
                             </li>
-                        <?php endif ?>
-                        <?php if (session()->get('role') == 1) : ?>
                             <li class="sidebar-item">
                                 <a class="sidebar-link <?php if (in_array($activeMenu, ['overview'])) echo "active" ?>" href="<?php echo site_url("overview") ?>" aria-expanded="false">
                                     <span>
@@ -112,7 +123,7 @@
     <script src="<?= base_url() ?>/assets/js/sidebarmenu.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/simplebar/dist/simplebar.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 

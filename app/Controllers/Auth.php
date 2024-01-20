@@ -61,7 +61,7 @@ class Auth extends BaseController
                         'role' => 0
                     ];
                     session()->set($data);
-                    return redirect()->to(base_url('/aspek/' . $row->id_user));
+                    return redirect()->to(base_url('/aspek/result/' . $row->id_user));
                 }
             }
         }
