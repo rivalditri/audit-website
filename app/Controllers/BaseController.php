@@ -96,7 +96,10 @@ abstract class BaseController extends Controller
             $csatker[$idLevel] = $result / $jumlah;
             $csatker[$idLevel] = round($csatker[$idLevel] * 100, 2);
         }
-        $data = ["cpu" => $cpu, "csatker" => $csatker];
+        $data = [
+            "cpu" => $cpu,
+            "csatker" => $csatker,
+        ];
         return $data;
     }
     public function hitungLevel($id_aspek)
@@ -126,6 +129,61 @@ abstract class BaseController extends Controller
         $count = count($level);
         // Menghitung rata-rata
         $average = $total / $count;
+        return $average;
+    }
+
+    private function avgIndikator($levelIndikator, $id_user)
+    {
+        $value = 100;
+        foreach ($levelIndikator as $level) {
+            $ValidDokumen = 0;
+            $idLevel = $level->id_level_kapabilitas;
+            $jumlahProses = $this->levelProses_model->countProses($idLevel)->jumlah_proses;
+            $jumlahDokumen = $this->dokumen_model->getUploadedDocument($idLevel, $id_user);
+            foreach ($jumlahDokumen as $dokumen) {
+                $id_file = $dokumen->id_file_dokumen;
+                $ValidDokumen += $this->taskValidation_model->countValidDoc($id_file)->validCount;
+            }
+            $jumlahDokumen = count($jumlahDokumen);
+            $mean = $ValidDokumen / $jumlahProses;
+            $mean = round($mean * 100, 2);
+            $value += $mean;
+        }
+        return $value;
+    }
+
+    public function capaianIndikator($indikators)
+    {
+        $user = $this->user_model->getUsers();
+        foreach ($indikators as $indikator) {
+            $levelindikator = $this->levelIndikator_model->getLevel($indikator->id_indikator);
+            foreach ($user as $u) {
+                $value = $this->avgIndikator($levelindikator, $u->id_user);
+                $presentase[$u->id_user][$indikator->id_indikator] = $value / count($levelindikator);
+            }
+        }
+
+        return $presentase;
+    }
+    // public function capaianIndikator($id_indikator)
+    // {
+    //     $user = $this->user_model->getUsers();
+    //     foreach ($user as $u) {
+    //         $levelindikator = $this->levelIndikator_model->getLevel($id_indikator);
+
+    //         $value = $this->avgIndikator($levelindikator, $u->id_user);
+    //         $presentase[$u->id_user] =  $value / count($levelindikator);
+    //     }
+    //     return $presentase;
+    // }
+
+    public function capaianAspek($capaianIndikator)
+    {
+        $total = 0;
+        foreach ($capaianIndikator as $key => $value) {
+            $total = array_sum($value);
+            $average[$key] = $total / count($value);
+        }
         return $average;
     }
 }

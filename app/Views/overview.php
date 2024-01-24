@@ -38,49 +38,31 @@
                                     </th>
                                 </tr>
                                 <tr class="text-center">
-                                    <th scope="col" class="border-bottom-0">
-                                        <a href="/capaian" class="text-decoration-underline text-black">
-                                            <h6 class="fw-semibold mb-0 custom-text-color">Kapabilitas Internal <i class="ti ti-link"></i></h6>
-                                        </a>
-                                    </th>
-                                    <th scope="col" class="border-bottom-0">
-                                        <a href="/capaian" class="text-decoration-underline text-black">
-                                            <h6 class="fw-semibold mb-0 custom-text-color">Tata Kelola dan Kepemimpinan <i class="ti ti-link"></i></h6>
-                                        </a>
-                                    </th>
-                                    <th scope="col" class="border-bottom-0">
-                                        <a href="/capaian" class="text-decoration-underline text-black">
-                                            <h6 class="fw-semibold mb-0 custom-text-color">Inovasi <i class="ti ti-link"></i></h6>
-                                        </a>
-                                    </th>
-                                    <th scope="col" class="border-bottom-0">
-                                        <a href="/capaian" class="text-decoration-underline text-black">
-                                            <h6 class="fw-semibold mb-0 custom-text-color">Lingkungan <i class="ti ti-link"></i></h6>
-                                        </a>
-                                    </th>
+                                    <?php foreach ($aspeks as $aspek) : ?>
+                                        <th scope="col" class="border-bottom-0">
+                                            <a href="/capaian/<?= $aspek->id_aspek ?>" class="text-decoration-underline text-black">
+                                                <h6 class="fw-semibold mb-0 custom-text-color"><?= $aspek->aspek ?> <i class="ti ti-link"></i></h6>
+                                            </a>
+                                        </th>
+                                    <?php endforeach; ?>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr scope="row" class="border-bottom border-dark text-center">
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Saintek</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">23,325</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">23,325</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">23,325</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">23,325</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">23,325</p>
-                                    </td>
-                                </tr>
+                                <?php foreach ($dataUser as $user) : ?>
+                                    <tr scope="row" class="border-bottom border-dark text-center">
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0"><?= $user->nama_unit ?></h6>
+                                        </td>
+                                        <?php foreach ($aspeks as $aspek) : ?>
+                                            <td class="border-bottom-0">
+                                                <p class="mb-0 fw-normal"><?= $hasil[$aspek->id_aspek][$user->id_user]; ?></p>
+                                            </td>
+                                        <?php endforeach; ?>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal"><?= $hasil[$user->nama_unit]; ?></p>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

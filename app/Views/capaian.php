@@ -15,7 +15,7 @@
                     </h3>
                     <div class="d-flex justify-content-between">
                         <h5 class="flex-grow-1 card-title fw-semibold mb-4">
-                            Aspek: Kapabilitas Internal
+                            <?= $aspek->aspek ?>
                         </h5>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -31,7 +31,7 @@
                                     <th scope="col" class="border-bottom-0" rowspan="2" style="vertical-align: middle;">
                                         <h6 class="fw-semibold mb-0">Unit Kerja</h6>
                                     </th>
-                                    <th scope="col" class="border-bottom-0" colspan="4">
+                                    <th scope="col" class="border-bottom-0" colspan="<?= count($indikators) ?>">
                                         <h6 class="fw-semibold mb-0">Indikator</h6>
                                     </th>
                                     <th scope="col" class="border-bottom-0" rowspan="2" style="vertical-align: middle;">
@@ -39,41 +39,31 @@
                                     </th>
                                 </tr>
                                 <tr class="text-center">
-                                    <th scope="col" class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 custom-text-color">Sumber Daya Manusia</h6>
-                                    </th>
-                                    <th scope="col" class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 custom-text-color">Proses Bisnis</h6>
-                                    </th>
-                                    <th scope="col" class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 custom-text-color">Teknologi</h6>
-                                    </th>
-                                    <th scope="col" class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0 custom-text-color">Customer Focus</h6>
-                                    </th>
+                                    <?php foreach ($indikators as $indikator) : ?>
+                                        <th scope="col" class="border-bottom-0">
+                                            <a href="#?>" class="text-decoration-underline text-black">
+                                                <h6 class="fw-semibold mb-0 custom-text-color"><?= $indikator->indikator ?> <i class="ti ti-link"></i></h6>
+                                            </a>
+                                        </th>
+                                    <?php endforeach; ?>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr scope="row" class="border-bottom border-dark text-center">
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Saintek</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">33,3</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">33,3</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">33,3</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">33,3</p>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <p class="mb-0 fw-normal">33,3</p>
-                                    </td>
-                                </tr>
+                                <?php foreach ($dataUser as $user) : ?>
+                                    <tr scope="row" class="border-bottom border-dark text-center">
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0"><?= $user->nama_unit ?></h6>
+                                        </td>
+                                        <?php foreach ($indikators as $indikator) : ?>
+                                            <td class="border-bottom-0">
+                                                <p class="mb-0 fw-normal"><?= $capaianIndikator[$user->id_user][$indikator->id_indikator] ?></p>
+                                            </td>
+                                        <?php endforeach; ?>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal"><?= $hasil[$user->id_user] ?></p>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

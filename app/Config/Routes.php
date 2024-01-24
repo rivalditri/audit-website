@@ -13,7 +13,7 @@ $routes->get('/aspek/result/(:segment)', 'Aspek::result/$1');
 $routes->get('/admin', 'admin\Home::index');
 $routes->get('/users', 'admin\User::index');
 $routes->get('/overview', 'admin\Overview::index');
-$routes->get('/capaian', 'admin\Capaian::index');
+$routes->get('/capaian/(:segment)', 'admin\Capaian::index/$1');
 $routes->post('/users/add', 'admin\User::adduser');
 $routes->post('/users/edit/(:segment)', 'admin\User::edit/$1');
 $routes->post('/users/delete/(:segment)', 'admin\User::delete/$1');
