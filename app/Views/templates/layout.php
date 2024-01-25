@@ -58,7 +58,7 @@
                         <?php endif ?>
                         <?php if (session()->get('role') == 1) : ?>
                             <li class="sidebar-item">
-                                <a class="sidebar-link <?php if (in_array($activeMenu, ['validasi'])) echo "active" ?>" href="<?php echo site_url("admin"); ?>" aria-expanded="false">
+                                <a class="sidebar-link <?php if (in_array($activeMenu, ['result']) || in_array($activeMenu, ['process']) || in_array($activeMenu, ['validasi'])) echo "active" ?>" href="<?php echo site_url("admin"); ?>" aria-expanded="false">
                                     <span>
                                         <i class="ti ti-article"></i>
                                     </span>
@@ -123,7 +123,7 @@
     <script src="<?= base_url() ?>/assets/js/sidebarmenu.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/simplebar/dist/simplebar.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 

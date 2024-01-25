@@ -19,7 +19,13 @@
                         </h5>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('user') ?>">Aspek</a></li>
+                                <?php if (session()->get('role') == 1) : ?>
+                                    <li class="breadcrumb-item"><a href="/aspek/<?= session()->get('user') ?>">Aspek</a></li>
+                                <?php elseif ($aspek == "Keuangan" || $aspek == "Pelayanan") : ?>
+                                    <li class="breadcrumb-item"><a href="/aspek/result/<?= session()->get('user') ?>">Aspek</a></li>
+                                <?php elseif ($aspek == "Kapabilitas Internal" || $aspek == "Tata Kelola dan Kepemimpinan" || $aspek == "Inovasi" || $aspek == "Lingkungan") : ?>
+                                    <li class="breadcrumb-item"><a href="/aspek/process/<?= session()->get('user') ?>">Aspek</a></li>
+                                <?php endif ?>
                                 <li class="breadcrumb-item"><a href="/indikator/<?= explode('/', explode('.', uri_string())[0])[1] ?>"><?= $aspek ?></a></li>
                                 <li class="breadcrumb-item active" aria-current="page"><?= $indikator ?></li>
                             </ol>

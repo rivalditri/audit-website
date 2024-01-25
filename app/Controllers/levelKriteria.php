@@ -8,7 +8,6 @@ class levelKriteria extends BaseController
     public function index($id_level = 0)
     {
         $data['title'] = "Level Proses";
-        $data['activeMenu'] = "validasi";
 
         //get Indikator dari level indikator
         $indikator = $this->levelProses_model->getIndikator($id_level);
@@ -44,6 +43,11 @@ class levelKriteria extends BaseController
         $data['kriteria'] = $kriteriaLevel->kriteria_level;
         $data['level'] = $kriteriaLevel->nama_level;
         $data['data_proses'] = $proses;
+        if ($aspek == "Keuangan" || $aspek == "Pelayanan") {
+            $data['activeMenu'] = "result";
+        } else {
+            $data['activeMenu'] = "process";
+        }
         return view('level_kriteria', $data);
     }
 }

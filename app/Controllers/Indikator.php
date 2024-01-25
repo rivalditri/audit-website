@@ -19,7 +19,11 @@ class Indikator extends BaseController
     public function index($id_aspek = 0)
     {
         $data['title'] = "Indikator";
-        $data['activeMenu'] = "validasi";
+        if ($id_aspek == 0 || $id_aspek == 1) {
+            $data['activeMenu'] = "result";
+        } else {
+            $data['activeMenu'] = "process";
+        }
         $indikators = $this->indikator_model->where('id_aspek', $id_aspek)->findAll();
         $level = $this->hitungLevel($id_aspek);
         $data['level'] = $level;
