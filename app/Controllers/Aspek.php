@@ -23,6 +23,7 @@ class Aspek extends BaseController
             $maturitas[$id_aspek] = $average;
         }
         $data['maturitas'] = $maturitas;
+        $data['kategori'] = 'process';
         $data['dataAspek'] = $aspeks;
         return view('aspek', $data);
     }

@@ -165,17 +165,6 @@ abstract class BaseController extends Controller
 
         return $presentase;
     }
-    // public function capaianIndikator($id_indikator)
-    // {
-    //     $user = $this->user_model->getUsers();
-    //     foreach ($user as $u) {
-    //         $levelindikator = $this->levelIndikator_model->getLevel($id_indikator);
-
-    //         $value = $this->avgIndikator($levelindikator, $u->id_user);
-    //         $presentase[$u->id_user] =  $value / count($levelindikator);
-    //     }
-    //     return $presentase;
-    // }
 
     public function capaianAspek($capaianIndikator)
     {

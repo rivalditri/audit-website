@@ -22,8 +22,8 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="<?php echo site_url("/") ?>" class="text-nowrap logo-img mt-3">
-                        <img src="<?= base_url() ?>/img/logo-uin.png" width="100" alt="" />
+                    <a href="<?php echo site_url("/landingpage") ?>" class="text-nowrap logo-img mt-3">
+                        <img src="<?= base_url() ?>/img/uinxblu.png" width="100" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -100,6 +100,9 @@
                                     <img src="<?= base_url() ?>/assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                                    <div class="massage-body">
+                                        <p class="mx-3 mt-2 fw-normal">Hi..! <br><?= session()->get('login_unit') ?></p>
+                                    </div>
                                     <div class="message-body">
                                         <a href="/logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>
@@ -123,7 +126,7 @@
     <script src="<?= base_url() ?>/assets/js/sidebarmenu.js"></script>
     <script src="<?= base_url() ?>/assets/js/app.min.js"></script>
     <script src="<?= base_url() ?>/assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 
 

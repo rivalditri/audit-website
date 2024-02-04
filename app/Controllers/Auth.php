@@ -46,6 +46,8 @@ class Auth extends BaseController
                 session()->setFlashdata('failed', 'User tidak ditemukan/inactive');
                 return redirect()->to(base_url('/'));
             } else {
+                session()->set('login_unit', $row->nama_unit);
+                session()->set('login_user', $row->id_user);
                 if ($row->is_admin == 1) {
                     $data = [
                         'id_user' => $row->id_user,
@@ -61,7 +63,7 @@ class Auth extends BaseController
                         'role' => 0
                     ];
                     session()->set($data);
-                    return redirect()->to(base_url('/aspek/result/' . $row->id_user));
+                    return redirect()->to(base_url('/landingpage'));
                 }
             }
         }

@@ -20,7 +20,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/overview">Overview Capaian</a></li>
-                                <li class="breadcrumb-item active">Kapabilitas Internal</li>
+                                <li class="breadcrumb-item active"><?= $aspek->aspek ?></li>
                             </ol>
                         </nav>
                     </div>
