@@ -87,11 +87,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
+                                <?php
                                 foreach ($data_proses as $proses) : ?>
                                     <tr>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="fw-semibold mb-0"><?= $no++; ?></h6>
+                                            <h6 class="fw-semibold mb-0"><?= $proses->id_level_kriteria; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 fixed-width-column">
                                             <?= $proses->kriteria_proses ?>;
